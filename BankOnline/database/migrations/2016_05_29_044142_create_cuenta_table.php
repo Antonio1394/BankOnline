@@ -14,6 +14,11 @@ class CreateCuentaTable extends Migration
     {
         Schema::create('cuentas', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('idTipo')->unsigned();
+            $table->integer('idCliente')->unsigned();
+            $table->integer('monto')->unsigned();
+            $table->date('fechaCreacion');
+            $table->boolean('estado');
             $table->timestamps();
         });
     }
