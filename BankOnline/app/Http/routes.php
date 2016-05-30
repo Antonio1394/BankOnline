@@ -14,4 +14,7 @@
 Route::get('/', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
-Route::get('/admin', 'Admin\UsersController@begin');
+
+Route::group(['prefix' => 'admin', 'namespace' => '\Admin', 'middleware' => 'auth'], function () {
+    Route::get('/', 'UsersController@begin');
+});
