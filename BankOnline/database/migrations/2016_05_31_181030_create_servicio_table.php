@@ -12,7 +12,7 @@ class CreateServicioTable extends Migration
      */
     public function up()
     {
-        Schema::create('servicio', function (Blueprint $table) {
+        Schema::create('servicios', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idTarjeta')->unsigned();
             $table->date('fechaPago');
