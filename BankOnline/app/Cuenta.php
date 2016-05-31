@@ -12,7 +12,8 @@ class Cuenta extends Model
                          'idCliente',
                          'monto',
                          'fechaCreacion',
-                         'estado'
+                         'estado',
+                         'noCuenta'
                         ];
 
   public $relations = ['cliente',

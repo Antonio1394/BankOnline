@@ -34,23 +34,26 @@
                               <th>Dirección</th>
                               <th>Teléfono</th>
                               <th>No. Cuenta</th>
+                              <th>Acciones</th>
                           </tr>
                       </thead>
                       <tbody>
-                        {{-- @foreach($data as  $key => $centro)
+                        @foreach($customers as  $key => $customer)
                            <tr>
                                <td>{{ $key + 1   }}</td>
-                               <td>{{ $centro->centro }} </td>
-                               <td>{{ $centro->direccion }} </td>
-                               <td>{{ $centro->telefono }} </td>
-                               <td>{{ $centro->tipo_centro->tipo }} </td>
+                               <td>{{ $customer->cliente->nombre }} </td>
+                               <td>{{ $customer->cliente->apellido }} </td>
+                               <td>{{ $customer->cliente->dpi }} </td>
+                               <td>{{ $customer->cliente->direccion }} </td>
+                               <td>{{ $customer->cliente->telefono }} </td>
+                               <td>{{ $customer->noCuenta }} </td>
                                <td class="text-center">
-                                   <button type="button" name="edit" class="btn btn-info btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="centros/{{ $centro->id }}/edit" data-title="Actualizar Centro">Editar</button>
-                                   <button type="button" name="delete" class="btn btn-danger btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="centros/{{ $centro->id }}" data-title="Eliminar Centro">Eliminar</button>
+                                   <button type="button" name="edit" class="btn btn-info btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="centros/{{ $customer->cliente->id }}/edit" data-title="Actualizar Centro">Editar</button>
+                                   <button type="button" name="delete" class="btn btn-danger btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="centros/{{ $customer->cliente->id }}" data-title="Eliminar Centro">Eliminar</button>
                                </td>
 
                            </tr>
-                       @endforeach --}}
+                       @endforeach
                       </tbody>
                   </table>
               </div><!-- /.box-body -->

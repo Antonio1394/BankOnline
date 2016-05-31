@@ -14,7 +14,7 @@ $("#createForm").validate({
             },
 
             email:{
-                email: true,
+                email: true
             },
             telefono:{
                 required: true,

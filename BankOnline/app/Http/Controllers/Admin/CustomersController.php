@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Cuenta;
+
 class CustomersController extends Controller
 {
     /**
@@ -16,7 +18,8 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        return view('admin/customers/index');
+        $customers = Cuenta::all();
+        return view('admin/customers/index', compact('customers'));
     }
 
     /**
