@@ -12,7 +12,7 @@ class CreatePagoPrestamoTable extends Migration
      */
     public function up()
     {
-        Schema::create('pagoPrestamo', function (Blueprint $table) {
+        Schema::create('pagosPrestamo', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idPrestamo')->unsigned();
             $table->decimal('cantidad');

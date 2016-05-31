@@ -26,6 +26,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     protected $fillable = ['usuario', 'email', 'password','estado','idCliente'];
 
+    public $relations = ['Cliente'];
+
+    public function cliente()
+    {
+      return $this->hasOne('App\Cliente','id','idCliente');
+    }
     /**
      * The attributes that are mass assignable.
      *
