@@ -8,7 +8,7 @@
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Centers</title>
+    <title>Inicio de Sesión</title>
 
     <!-- Bootstrap CSS -->
     {!!Html::style("css/bootstrap.min.css")!!}
