@@ -13,7 +13,8 @@ class UserTableSeeder extends Seeder
     {
       $user = new User;
       $user->password ='12345';
-      $user->name = 'Yo';
+      $table->Usuario='Admin';
+
       $user->email = 'admin@gmail.com';
       $user->save();
     }

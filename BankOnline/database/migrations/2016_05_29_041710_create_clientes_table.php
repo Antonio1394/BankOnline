@@ -19,7 +19,6 @@ class CreateClientesTable extends Migration
             $table->string('dpi');
             $table->string('direccion');
             $table->string('telefono');
-            $table->string('correo');
             $table->string('beneficiario');
 
             $table->timestamps();
