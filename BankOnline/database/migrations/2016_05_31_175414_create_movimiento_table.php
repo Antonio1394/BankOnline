@@ -41,6 +41,6 @@ class CreateMovimientoTable extends Migration
      */
     public function down()
     {
-        Schema::drop('movimiento');
+        Schema::drop('movimientos');
     }
 }

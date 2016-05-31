@@ -19,20 +19,20 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="glyphicon glyphicon-user"></i>
-                        <!--<span>{{ Auth::user()->user }} <i class="caret"></i></span>-->
+                        {{ Auth::user()->user }} <i class="caret"></i></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header bg-light-blue">
                             <img src="{{ asset('img/avatar.png') }}" class="img-circle" alt="Imagen de Usuario" />
                             <p>
-                                <!--Usuario: {{ Auth::user()->user }}-->
+                                Usuario: {{ Auth::user()->user }}
                             </p>
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-right">
-                                <!--<a href="{{ url('auth/logout') }}" class="btn btn-default btn-flat">Cerrar Sesión</a>-->
+                                <a href="{{ url('auth/logout') }}" class="btn btn-default btn-flat">Cerrar Sesión</a>
                             </div>
                         </li>
                     </ul>
