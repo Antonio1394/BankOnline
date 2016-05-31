@@ -19,6 +19,12 @@ class CreateCuentaTable extends Migration
             $table->integer('monto')->unsigned();
             $table->date('fechaCreacion');
             $table->boolean('estado');
+            $table->foreign('idTipo')
+                  ->references('id')
+                  ->on('tipoCuenta');
+            $table->foreign('idCliente')
+                  ->references('id')
+                  ->on('clientes');
             $table->timestamps();
         });
     }
