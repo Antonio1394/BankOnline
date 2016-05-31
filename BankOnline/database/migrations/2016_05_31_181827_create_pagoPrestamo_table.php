@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreatePagoPrestamoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,16 +12,17 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('pagoPrestamo', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('usuario');
-            $table->string('email')->unique();
-            $table->string('password', 60);
-            $table->boolean('estado');
-            $table->integer('idCliente')->unsigned();
-            $table->foreign('idCliente')
+            $table->integer('idPrestamo')->unsigned();
+            $table->decimal('cantidad');
+            $table->date('fecha');
+
+            // Relaciones
+            $table->foreign('idPrestamo')
                   ->references('id')
-                  ->on('clientes');
+                  ->on('prestamos');
+
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
+        Schema::drop('pagoPrestamo');
     }
 }

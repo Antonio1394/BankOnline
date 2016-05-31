@@ -12,7 +12,7 @@ class UserTableSeeder extends Seeder
     public function run()
     {
       $user = new User;
-      $table->usuario='Admin';
+      $user->usuario='Admin';
       $user->email = 'admin@gmail.com';
       $user->password ='12345';
       $user->estado=true;
