@@ -12,7 +12,7 @@ class CreateMovimientoTable extends Migration
      */
     public function up()
     {
-        Schema::create('movimiento', function (Blueprint $table) {
+        Schema::create('movimientos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idCuenta')->unsigned();
             $table->integer('idTipo')->unsigned();
