@@ -31,7 +31,7 @@
           <div class="row">
             <div class="form-group col-md-6">
             	<label for="telefono">Teléfono</label>
-            	{!!Form::text('telefono', null, array('class' => 'form-control', 'placeholder' => 'Ingrese el telefono'))!!}
+            	{!!Form::text('telefono', null, array('class' => 'form-control', 'placeholder' => 'Ingrese el telefono', 'required' => 'required'))!!}
             </div>
 
             <div class="form-group col-md-6">
@@ -43,7 +43,7 @@
           <div class="row">
             <div class="form-group col-md-6">
             	<label for="beneficiario">Beneficiario</label>
-            	{!!Form::text('beneficiario', null, array('class' => 'form-control', 'placeholder' => 'Ingrese el beneficiario'))!!}
+            	{!!Form::text('beneficiario', null, array('class' => 'form-control', 'placeholder' => 'Ingrese el beneficiario', 'required' => 'required'))!!}
             </div>
           </div>
         </div>

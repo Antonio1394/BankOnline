@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Cuenta;
+use App\TipoCuenta;
 
 class CustomersController extends Controller
 {
@@ -29,7 +30,8 @@ class CustomersController extends Controller
      */
     public function create()
     {
-        return view('admin/customers/create');
+        $typeAccount = TipoCuenta::lists('descripcion', 'id');
+        return view('admin/customers/create', compact('typeAccount'));
     }
 
     /**

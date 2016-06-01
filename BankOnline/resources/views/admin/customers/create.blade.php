@@ -24,7 +24,8 @@
                 </div><!-- /.box-header -->
                 <div class="box-body table-responsive">
                   {!!Form::open(['route' => 'admin.clientes.store', 'method' => 'POST', 'class' => 'form-validate', 'id' => 'createForm'])!!}
-                      @include('admin.customers.partials.inputsForm')
+                      @include('admin.customers.partials.inputsCustomers')
+                      @include('admin.customers.partials.inputsAccount')
                       <div class="content back-white">
                         <div class="row">
                             <div class="form-group col-md-11 text-right">
