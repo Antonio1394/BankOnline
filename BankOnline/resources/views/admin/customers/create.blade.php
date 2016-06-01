@@ -26,6 +26,7 @@
                   {!!Form::open(['route' => 'admin.clientes.store', 'method' => 'POST', 'class' => 'form-validate', 'id' => 'createForm'])!!}
                       @include('admin.customers.partials.inputsCustomers')
                       @include('admin.customers.partials.inputsAccount')
+                      @include('admin.customers.partials.inputsUsers')
                       <div class="content back-white">
                         <div class="row">
                             <div class="form-group col-md-11 text-right">

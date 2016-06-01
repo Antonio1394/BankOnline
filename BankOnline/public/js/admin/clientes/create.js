@@ -13,6 +13,9 @@ $("#createForm").validate({
             },
             fechaCreacion:{
                 date: true
+            },
+            password: {
+              minlength: 8
             }
         },///Fin de Reglas
     messages: {
@@ -53,6 +56,13 @@ $("#createForm").validate({
             fechaCreacion:{
                 required: "Por favor ingrese la fecha.",
                 date: "Por favor ingrese una fecha valida."
+            },
+            usuario: {
+              required: "Por favor ingrese un nombre de usuario."
+            },
+            password: {
+              required: "Por favor ingrese una contraseña.",
+              minlength: "La contraseña debe tener 8 o mas caracteres."
             }
         },///fin de messages
         submitHandler: function(form){
