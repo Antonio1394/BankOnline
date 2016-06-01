@@ -26,7 +26,7 @@ class TarjetasController extends Controller
      */
     public function create()
     {
-        //
+      return view('admin.cards.partials.createForm');
     }
 
     /**
