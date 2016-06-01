@@ -8,9 +8,11 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\CustomersRequest;
+use App\Http\Requests\CustomersEditRequest;
 
 use App\Cuenta;
 use App\TipoCuenta;
+use App\Cliente;
 
 class CustomersController extends BaseCustomersController
 {
@@ -71,7 +73,8 @@ class CustomersController extends BaseCustomersController
      */
     public function edit($id)
     {
-        //
+        $customer = Cliente::find($id);
+        return view('admin/customers/edit', compact('customer'));
     }
 
     /**
@@ -81,9 +84,13 @@ class CustomersController extends BaseCustomersController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CustomersEditRequest $request, $id)
     {
-        //
+        $customer = Cliente::find($id);
+        $customer->fill($request->all());
+        $customer->save();
+
+        return redirect('/admin/clientes')->with('message','Cliente Editado Correctamente');
     }
 
     /**

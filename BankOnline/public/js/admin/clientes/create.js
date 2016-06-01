@@ -1,4 +1,4 @@
-$("#createForm").validate({
+$("#createForm, #editForm").validate({
     rules: {
             email:{
                 email: true
