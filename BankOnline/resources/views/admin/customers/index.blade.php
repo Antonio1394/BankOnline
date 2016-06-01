@@ -13,6 +13,8 @@
 
         <!-- Main content -->
         <section class="content">
+          @include('admin.partials.alertSuccess')
+          @include('admin.partials.alertErrors')
 
           <div class="box box-primary">
               <div class="box-header">
@@ -52,7 +54,7 @@
                                <td class="text-center">
                                    <button type="button" name="edit" class="btn btn-info btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="centros/{{ $customer->cliente->id }}/edit" data-title="Actualizar Centro">Editar</button>
                                    <button type="button" name="delete" class="btn btn-danger btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="centros/{{ $customer->cliente->id }}" data-title="Eliminar Centro">Eliminar</button>
-                                   <button type="button" name="delete" class="btn btn-warning btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="{{('tarjetas/create') }}" data-title="Agregar Tarjeta">Agregar Tarjeta</button>
+                                   <button type="button" name="delete" class="btn btn-warning btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="MostrarTarjeta/{{$customer->id}}" data-title="Agregar Tarjeta">Agregar Tarjeta</button>
                                </td>
                            </tr>
                        @endforeach
