@@ -20,6 +20,15 @@ class ClientesTableSeeder extends Seeder
         $cliente->beneficiario='Mi mama';
         $cliente->save();
 
+        $cliente = new Cliente;
+        $cliente->nombre='Pablo Felix';
+        $cliente->apellido='Mendez Argueta';
+        $cliente->dpi='2631756891104';
+        $cliente->direccion='Retalhuleu';
+        $cliente->telefono='54125484';
+        $cliente->beneficiario='Mi mama';
+        $cliente->save();
+
 
     }
 }

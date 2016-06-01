@@ -15,12 +15,25 @@
         </div>
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
+          @if( Auth::user()->idCliente == 1 )
           <li>
               <a href="{{ url('admin/clientes') }}">
                   <i class="fa fa-users"></i> <span> Clientes</span>
               </a>
           </li>
+          <li>
+              <a href="{{ url('admin/tarjetas') }}">
+                  <i class="fa fa-credit-card-alt"></i> <span> Tarjetas</span>
+              </a>
+          </li>
+          @else
+          <li>
+              <a href="{{ url('admin/tarjetas') }}">
+                  <i class="fa fa-credit-card-alt"></i> <span> Cuentas</span>
+              </a>
+          </li>
         </ul>
+        @endif
 
     </section>
     <!-- /.sidebar -->

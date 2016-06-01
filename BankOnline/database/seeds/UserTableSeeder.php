@@ -18,5 +18,13 @@ class UserTableSeeder extends Seeder
       $user->estado=true;
       $user->idCliente=1;
       $user->save();
+
+      $user = new User;
+      $user->usuario='Cliente1';
+      $user->email = 'cliente@gmail.com';
+      $user->password ='12345';
+      $user->estado=true;
+      $user->idCliente=2;
+      $user->save();
     }
 }

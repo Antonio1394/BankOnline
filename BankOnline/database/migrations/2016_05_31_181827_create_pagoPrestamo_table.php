@@ -34,6 +34,6 @@ class CreatePagoPrestamoTable extends Migration
      */
     public function down()
     {
-        Schema::drop('pagoPrestamo');
+        Schema::drop('pagosPrestamo');
     }
 }
