@@ -13,7 +13,6 @@ class UserTableSeeder extends Seeder
     {
       $user = new User;
       $user->usuario='Admin';
-      $user->email = 'admin@gmail.com';
       $user->password ='12345';
       $user->estado=true;
       $user->idCliente=1;
@@ -21,7 +20,6 @@ class UserTableSeeder extends Seeder
 
       $user = new User;
       $user->usuario='Cliente1';
-      $user->email = 'cliente@gmail.com';
       $user->password ='12345';
       $user->estado=true;
       $user->idCliente=2;

@@ -66,6 +66,7 @@ $("#createForm").validate({
             }
         },///fin de messages
         submitHandler: function(form){
-          alert('siiii');
+          $('#createForm .btn-primary').prop('disabled', true);
+          form.submit();
         }///Fin Funcion Submit
       });

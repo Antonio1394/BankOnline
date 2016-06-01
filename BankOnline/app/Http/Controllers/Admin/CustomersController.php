@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\CustomersRequest;
+
 use App\Cuenta;
 use App\TipoCuenta;
 
-class CustomersController extends Controller
+class CustomersController extends BaseCustomersController
 {
     /**
      * Display a listing of the resource.
@@ -40,9 +42,14 @@ class CustomersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CustomersRequest $request)
     {
-        //
+        $this->begin($request);
+        $this->customersSave();
+        $this->accountSave();
+        $this->userSave();
+
+        return redirect('/admin/clientes')->with('message', 'Cliente creado correctamente.');
     }
 
     /**
