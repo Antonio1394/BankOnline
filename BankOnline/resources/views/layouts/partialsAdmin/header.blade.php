@@ -19,14 +19,14 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="glyphicon glyphicon-user"></i>
-                        {{ Auth::user()->user }} <i class="caret"></i></span>
+                        {{ Auth::user()->usuario }} <i class="caret"></i></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header bg-light-blue">
                             <img src="{{ asset('img/avatar.png') }}" class="img-circle" alt="Imagen de Usuario" />
                             <p>
-                                Usuario: {{ Auth::user()->user }}
+                                Usuario: {{ Auth::user()->usuario }}
                             </p>
                         </li>
                         <!-- Menu Footer-->
