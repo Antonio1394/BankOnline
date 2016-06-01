@@ -15,6 +15,7 @@ class ClientesTableSeeder extends Seeder
         $cliente->nombre='Juan Antonio';
         $cliente->apellido='Rivera Merida';
         $cliente->dpi='2631756261101';
+        $cliente->email = 'pepe@gmail.com';
         $cliente->direccion='Retalhuleu';
         $cliente->telefono='58745712';
         $cliente->beneficiario='Mi mama';
@@ -24,6 +25,7 @@ class ClientesTableSeeder extends Seeder
         $cliente->nombre='Pablo Felix';
         $cliente->apellido='Mendez Argueta';
         $cliente->dpi='2631756891104';
+        $cliente->email = 'pablo@gmail.com';
         $cliente->direccion='Retalhuleu';
         $cliente->telefono='54125484';
         $cliente->beneficiario='Mi mama';

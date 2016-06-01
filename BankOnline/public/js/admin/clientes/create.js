@@ -1,29 +1,21 @@
 $("#createForm").validate({
     rules: {
-            nombre: {
-                required: true
-            },
-            apellido: {
-                required: true
-            },
-            dpi: {
-                required: true
-            },
-            direccion: {
-                required: true
-            },
-
             email:{
                 email: true
             },
             telefono:{
-                required: true,
                 digits: true,
                 minlength: 8,
                 maxlength: 8
             },
-            beneficiario:{
-                required: true
+            monto: {
+              number: true
+            },
+            fechaCreacion:{
+                date: true
+            },
+            password: {
+              minlength: 8
             }
         },///Fin de Reglas
     messages: {
@@ -52,9 +44,29 @@ $("#createForm").validate({
             },
             beneficiario:{
                 required: "Por favor ingrese el beneficiario."
+            },
+            idTipo:
+            {
+                required: "Por favor seleccione un tipo de cuenta."
+            },
+            monto: {
+                required: "Por favor ingrese el monto.",
+                number: "Por favor ingrese solo numeros."
+            },
+            fechaCreacion:{
+                required: "Por favor ingrese la fecha.",
+                date: "Por favor ingrese una fecha valida."
+            },
+            usuario: {
+              required: "Por favor ingrese un nombre de usuario."
+            },
+            password: {
+              required: "Por favor ingrese una contraseña.",
+              minlength: "La contraseña debe tener 8 o mas caracteres."
             }
         },///fin de messages
         submitHandler: function(form){
-          alert('siiii');
+          $('#createForm .btn-primary').prop('disabled', true);
+          form.submit();
         }///Fin Funcion Submit
       });

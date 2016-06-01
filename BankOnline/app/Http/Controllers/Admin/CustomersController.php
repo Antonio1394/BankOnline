@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Cuenta;
+use App\Http\Requests\CustomersRequest;
 
-class CustomersController extends Controller
+use App\Cuenta;
+use App\TipoCuenta;
+
+class CustomersController extends BaseCustomersController
 {
     /**
      * Display a listing of the resource.
@@ -29,7 +32,8 @@ class CustomersController extends Controller
      */
     public function create()
     {
-        return view('admin/customers/create');
+        $typeAccount = TipoCuenta::lists('descripcion', 'id');
+        return view('admin/customers/create', compact('typeAccount'));
     }
 
     /**
@@ -38,9 +42,14 @@ class CustomersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CustomersRequest $request)
     {
-        //
+        $this->begin($request);
+        $this->customersSave();
+        $this->accountSave();
+        $this->userSave();
+
+        return redirect('/admin/clientes')->with('message', 'Cliente creado correctamente.');
     }
 
     /**

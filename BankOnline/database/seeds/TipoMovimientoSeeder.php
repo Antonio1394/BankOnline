@@ -1,5 +1,5 @@
 <?php
-use App\tipoMovimiento;
+use App\TipoMovimiento;
 use Illuminate\Database\Seeder;
 
 class TipoMovimientoSeeder extends Seeder
@@ -11,15 +11,15 @@ class TipoMovimientoSeeder extends Seeder
      */
     public function run()
     {
-      $tipo=new tipoMovimiento;
+      $tipo=new TipoMovimiento;
       $tipo->descripcion="Depósito";
       $tipo->save();
 
-      $tipo=new tipoMovimiento;
+      $tipo=new TipoMovimiento;
       $tipo->descripcion="Retiro";
       $tipo->save();
 
-      $tipo=new tipoMovimiento;
+      $tipo=new TipoMovimiento;
       $tipo->descripcion="Transacción";
       $tipo->save();
     }

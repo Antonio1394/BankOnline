@@ -33,6 +33,7 @@
                               <th>DPI</th>
                               <th>Dirección</th>
                               <th>Teléfono</th>
+                              <th>Tipo Cuenta</th>
                               <th>No. Cuenta</th>
                               <th class="text-center">Acciones</th>
                           </tr>
@@ -46,6 +47,7 @@
                                <td>{{ $customer->cliente->dpi }} </td>
                                <td>{{ $customer->cliente->direccion }} </td>
                                <td>{{ $customer->cliente->telefono }} </td>
+                               <td>{{ $customer->tipo->descripcion }} </td>
                                <td>{{ $customer->noCuenta }} </td>
                                <td class="text-center">
                                    <button type="button" name="edit" class="btn btn-info btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="centros/{{ $customer->cliente->id }}/edit" data-title="Actualizar Centro">Editar</button>
