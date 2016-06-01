@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use App\Tarjeta;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -16,7 +16,8 @@ class TarjetasController extends Controller
      */
     public function index()
     {
-        return 'hola';
+        $tarjeta=Tarjeta::all();
+        return view('admin.cards.list',compact('tarjeta'));
     }
 
     /**
@@ -26,7 +27,12 @@ class TarjetasController extends Controller
      */
     public function create()
     {
-      return view('admin.cards.partials.createForm');
+
+    }
+
+    public function mostrar($id)
+    {
+      return view('admin.cards.partials.createForm')->with('id',$id);
     }
 
     /**
@@ -37,7 +43,9 @@ class TarjetasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      Tarjeta::create($request->all());
+      return redirect('/admin/clientes')->with('message','Tarjeta Creada Exitosamente');
+
     }
 
     /**

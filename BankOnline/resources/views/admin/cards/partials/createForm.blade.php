@@ -5,5 +5,6 @@
     <div class="modal-footer">
 		{!!Form::submit('Registrar', array('class' => 'btn btn-primary'))!!}
 		<button type="button" class="btn btn-danger" data-dismiss="modal">cerrar</button>
-	</div>
+	 </div>
+   {!! Form::hidden('idCuenta', $id, ['id' => 'user_id']) !!}
 {!!Form::close()!!}
