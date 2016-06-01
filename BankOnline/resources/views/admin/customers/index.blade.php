@@ -51,7 +51,11 @@
                                <td>{{ $customer->noCuenta }} </td>
                                <td class="text-center">
                                    <button type="button" name="edit" class="btn btn-info btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="clientes/{{ $customer->cliente->id }}/edit" data-title="Actualizar Cliente">Editar</button>
-                                   <button type="button" name="delete" class="btn btn-danger btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="centros/{{ $customer->cliente->id }}" data-title="Eliminar Centro">Eliminar</button>
+                                   @if($customer->estado==0)
+                                       <button type="button" name="delete" class="btn btn-success btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="clientes/{{ $customer->id }}" data-title="Eliminar Centro">Eliminar</button>
+                                   @else
+                                       <button type="button" name="delete" class="btn btn-danger btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="clientes/{{ $customer->id }}" data-title="Eliminar Centro">Eliminar</button>
+                                   @endif
                                    <button type="button" name="delete" class="btn btn-warning btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="{{('tarjetas/create') }}" data-title="Agregar Tarjeta">Agregar Tarjeta</button>
                                </td>
                            </tr>

@@ -20,7 +20,8 @@ Route::group(['prefix' => 'admin', 'namespace' => '\Admin', 'middleware' => 'aut
     Route::resource('tarjetas','TarjetasController');
 
     Route::group(['middleware' => 'superAdmin'], function () {
-      Route::resource('clientes', 'CustomersController');
+        Route::put('cliente/activate/{id}',['as'=>'admin/cliente/activate','uses'=>'CustomersController@activate']);
+        Route::resource('clientes', 'CustomersController');
     });
 
 });

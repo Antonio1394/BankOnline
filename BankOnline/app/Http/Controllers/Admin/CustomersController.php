@@ -62,8 +62,14 @@ class CustomersController extends BaseCustomersController
      */
     public function show($id)
     {
-        //
+        $account=Cuenta::find($id);
+        if ( $account->estado == true ) {
+          return view('admin.customers.partials.deleteForm')->with('id', $id);
+        }else {
+          return view('admin.customers.partials.activate')->with('id', $id);
+        }
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -101,6 +107,11 @@ class CustomersController extends BaseCustomersController
      */
     public function destroy($id)
     {
-        //
+        echo 'desactivar';
+    }
+
+    public function activate($id)
+    {
+        echo 'activar';
     }
 }
