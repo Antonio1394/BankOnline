@@ -26,6 +26,11 @@
                   <i class="fa fa-credit-card-alt"></i> <span> Tarjetas</span>
               </a>
           </li>
+          <li>
+              <a href="{{ url('admin/cuentas') }}">
+                  <i class="fa fa-money"></i> <span> Cuentas</span>
+              </a>
+          </li>
           @else
           <li>
               <a href="{{ url('admin/tarjetas') }}">

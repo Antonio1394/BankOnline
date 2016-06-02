@@ -49,12 +49,7 @@
                                <td>{{ $customer->telefono }} </td>
                                <td class="text-center">
                                    <button type="button" name="edit" class="btn btn-info btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="clientes/{{ $customer->id }}/edit" data-title="Actualizar Cliente">Editar</button>
-                                   {{-- @if($customer->estado == 0)
-                                       <button type="button" name="delete" class="btn btn-success btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="clientes/{{ $customer->id }}" data-title="Eliminar Centro">Activar</button>
-                                   @else
-                                       <button type="button" name="delete" class="btn btn-danger btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="clientes/{{ $customer->id }}" data-title="Eliminar Centro">Desactivar</button>
-                                   @endif --}}
-                                   <button type="button" name="delete" class="btn btn-warning btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="{{('tarjetas/create') }}" data-title="Agregar Tarjeta">Agregar Tarjeta</button>
+                                   <button type="button" name="delete" class="btn btn-warning btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="{{('MostrarTarjeta/' . $customer->id ) }}" data-title="Agregar Tarjeta">Agregar Tarjeta</button>
                                </td>
                            </tr>
                        @endforeach

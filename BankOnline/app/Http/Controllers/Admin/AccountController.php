@@ -18,7 +18,8 @@ class AccountController extends Controller
      */
     public function index()
     {
-        //
+        $accounts = Cuenta::all();
+        return view('admin/accounts/index', compact('accounts'));
     }
 
     /**
@@ -52,9 +53,9 @@ class AccountController extends Controller
     {
         $account=Cuenta::find($id);
         if ( $account->estado == true ) {
-          return view('admin.customers.partials.deleteForm')->with('id', $id);
+          return view('admin.accounts.partials.deleteForm')->with('id', $id);
         }else {
-          return view('admin.customers.partials.activate')->with('id', $id);
+          return view('admin.accounts.partials.activate')->with('id', $id);
         }
     }
 
@@ -92,7 +93,7 @@ class AccountController extends Controller
         $account = Cuenta::find($id);///obtengo el Usuario
         $account->estado = false;// Cambio el Estaado del Paciente
         $account->save();
-        return redirect('/admin/clientes')->with('message','Temporalmente la cuenta fue dada de baja');
+        return redirect('/admin/cuentas')->with('message','Temporalmente la cuenta fue dada de baja');
     }
 
     public function activate($id)
@@ -100,6 +101,6 @@ class AccountController extends Controller
         $account = Cuenta::find($id);///obtengo el Usuario
         $account->estado = true;// Cambio el Estaado del Paciente
         $account->save();
-        return redirect('/admin/clientes')->with('message','Cuenta Activada.');
+        return redirect('/admin/cuentas')->with('message','Cuenta Activada.');
     }
 }

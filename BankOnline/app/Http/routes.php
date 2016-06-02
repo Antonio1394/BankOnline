@@ -21,7 +21,7 @@ Route::group(['prefix' => 'admin', 'namespace' => '\Admin', 'middleware' => 'aut
     Route::get('MostrarTarjeta/{id}',['as'=>'admin/MostrarTarjeta','uses'=>'TarjetasController@mostrar']);
     Route::group(['middleware' => 'superAdmin'], function () {
         Route::resource('clientes', 'CustomersController');
-        Route::put('cuenta/activate/{id}',['as'=>'admin/cliente/activate','uses'=>'AccountController@activate']);
+        Route::put('cuenta/activate/{id}',['as'=>'admin/cuenta/activate','uses'=>'AccountController@activate']);
         Route::resource('cuentas', 'AccountController');
     });
 

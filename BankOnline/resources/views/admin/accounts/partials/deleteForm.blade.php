@@ -1,4 +1,4 @@
-{!!Form::open(['route' => ['admin.clientes.destroy', $id], 'method' => 'DELETE'])!!}
+{!!Form::open(['route' => ['admin.cuentas.destroy', $id], 'method' => 'DELETE'])!!}
     <h4>
         Desea eliminar este registro?
     </h4>
