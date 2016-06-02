@@ -30,7 +30,7 @@
                       <div class="content back-white">
                         <div class="row">
                             <div class="form-group col-md-11 text-right">
-                                {!!Form::submit('Crear Boleta', array('class' => 'btn btn-primary'))!!}
+                                {!!Form::submit('Crear Cliente', array('class' => 'btn btn-primary'))!!}
                             </div>
                         </div>
                       </div>

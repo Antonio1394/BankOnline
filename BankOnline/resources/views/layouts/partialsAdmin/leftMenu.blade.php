@@ -35,6 +35,11 @@
                   <i class="fa fa-arrow-up"></i> <span>Retiros</span>
               </a>
           </li>
+          <li>
+              <a href="{{ url('admin/depositos') }}">
+                  <i class="fa fa-arrow-down"></i> <span>Depositos</span>
+              </a>
+          </li>
 
           @else
           <li>
