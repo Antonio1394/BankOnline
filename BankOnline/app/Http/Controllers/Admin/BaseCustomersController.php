@@ -49,7 +49,7 @@ class BaseCustomersController extends Controller
         $this->account->fechaCreacion = $this->request->fechaCreacion;
         $this->account->idCliente = $this->customer->id;
         $this->account->estado = true;
-        $this->account->noCuenta = '2016-' . $this->customer->id;
+        $this->account->noCuenta = '2016-' . $this->accountNumber();
 
         $this->account->save();
     }
@@ -65,5 +65,13 @@ class BaseCustomersController extends Controller
         $this->user->idCliente = $this->customer->id;
 
         $this->user->save();
+    }
+
+    protected function accountNumber()
+    {
+        $number = Cuenta::count();
+        $number++;
+
+        return $number;
     }
 }

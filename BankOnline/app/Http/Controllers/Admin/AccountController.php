@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\AccountRequest;
+
 use App\Cuenta;
+use App\TipoCuenta;
 
 class AccountController extends Controller
 {
@@ -18,7 +21,7 @@ class AccountController extends Controller
      */
     public function index()
     {
-        $accounts = Cuenta::all();
+        $accounts = Cuenta::orderBy('id', 'DESC')->get();
         return view('admin/accounts/index', compact('accounts'));
     }
 
@@ -32,15 +35,41 @@ class AccountController extends Controller
         //
     }
 
+    // Mostrar formulario de crear cuenta
+    public function new($id)
+    {
+        $typeAccount = TipoCuenta::lists('descripcion', 'id');
+        return view('admin.accounts.create', compact('typeAccount'))->with('id', $id);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AccountRequest $request)
     {
-        //
+        $account = new Cuenta;
+
+        $account->idTipo = $request->idTipo;
+        $account->monto = $request->monto;
+        $account->fechaCreacion = $request->fechaCreacion;
+        $account->idCliente = $request->idCliente;
+        $account->estado = true;
+        $account->noCuenta = '2016-' . $this->accountNumber();
+
+        $account->save();
+
+        return redirect('/admin/cuentas')->with('message', 'Cuenta creada correctamente.');
+    }
+
+    private function accountNumber()
+    {
+        $number = Cuenta::count();
+        $number++;
+
+        return $number;
     }
 
     /**
