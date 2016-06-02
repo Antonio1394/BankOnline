@@ -16,7 +16,7 @@ class TarjetasController extends Controller
      */
     public function index()
     {
-        $tarjeta=Tarjeta::all();
+        $tarjeta = Tarjeta::orderBy('id', 'DESC')->get();
         return view('admin.cards.list',compact('tarjeta'));
     }
 

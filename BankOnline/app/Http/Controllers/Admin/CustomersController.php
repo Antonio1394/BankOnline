@@ -22,7 +22,7 @@ class CustomersController extends BaseCustomersController
      */
     public function index()
     {
-        $customers = Cliente::all();
+        $customers = Cliente::orderBy('id', 'DESC')->get();
         return view('admin/customers/index', compact('customers'));
     }
 
