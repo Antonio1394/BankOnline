@@ -6,8 +6,8 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Clientes
-                <small>Estas en la pagina de clientes</small>
+                Retiros
+                <small>Estas en la pagina de Retiros</small>
             </h1>
         </section>
 
@@ -20,7 +20,7 @@
               <div class="box-header">
                   <div class="content">
                       <div class="row">
-                          <div class="col-md-6"><h3 class="box-title">Clientes</h3></div>
+                          <div class="col-md-6"><h3 class="box-title">Retiros</h3></div>
                           <div class="col-md-6 text-right"><a href="{{ url('admin/clientes/create') }}" class="btn btn-primary" style="color: white;">Crear Cliente</a></div>
                       </div>
                   </div>
@@ -30,27 +30,21 @@
                       <thead>
                           <tr>
                               <th>No.</th>
-                              <th># Tarjeta</th>
-                              <th>Cuenta</th>
+                              <th># de Cuenta</th>
+                              <th>Monto</th>
                               <th>Tipo</th>
-                              <th>Fecha Vencimiento</th>
-                              <th>Cliente</th>
+                              <th>Fecha de Operacion</th>
                               <th class="text-center">Acciones</th>
                           </tr>
                       </thead>
                       <tbody>
-                        @foreach($tarjeta as  $key => $data)
+                        @foreach($retiro as  $key => $data)
                            <tr>
                                <td>{{ $key + 1   }}</td>
-                               <td>{{ $data->numeroTarjeta }} </td>
+                               <td>{{ $data->cuenta->cliente->noCuenta }} </td>
+                               <td>{{ $data->monto }} </td>
                                <td>{{ $data->cuenta->noCuenta }} </td>
-                               @if($data->tipo==1)
-                               <td>Debito</td>
-                               @else
-                               <td>Credito</td>
-                               @endif
-                               <td>{{ $data->fechaVencimiento }} </td>
-                               <td>{{ $data->cuenta->cliente->nombre }} </td>
+                               <td>{{ $data->fecha }} </td>
                                <td class="text-center">
                                    <button type="button" name="edit" class="btn btn-info btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="centros/{{ $customer->cliente->id }}/edit" data-title="Actualizar Centro">Ver Movimientos</button>
 
