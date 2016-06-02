@@ -1,15 +1,14 @@
 
 <div class="form-group">
-	{!!Form::label('tipo','Tipo de Tarjeta:')!!}
-	{!!Form::select('tipo', config('TipoTarjetas'), null, ['class' => 'form-control'])!!}
+	{!! Form::hidden('idtipo', 2, ['id' => 'user_id']) !!}
+	{!! Form::hidden('cuenta_origen',0, ['id' => 'user_id']) !!}
+
+	<label for="">Numero de Cuenta</label>
+	{!!Form::text('cuenta_destino', null, array('class' => 'form-control', 'placeholder' => 'Inserta el número de Cuenta', 'required' => 'required'))!!}
 </div>
 <div class="form-group">
-	<label for="">Numero de Tarjeta</label>
-	{!!Form::text('numeroTarjeta', rand(11100,999985495), array('class' => 'form-control', 'placeholder' => 'Inserta el Nombre del centro', 'required' => 'required'))!!}
-</div>
-<div class="form-group">
-	<label for="">Fecha de Vencimiento</label>
-	{!!Form::date('fechaVencimiento', null, array('class' => 'form-control', 'placeholder' => 'Inserta la dirección del centro', 'required' => 'required'))!!}
+	<label for="">Monto a Retirar</label>
+	{!!Form::text('monto',null, array('class' => 'form-control', 'placeholder' => 'Inserta el Monto', 'required' => 'required'))!!}
 </div>
 
 <script type="text/javascript">
@@ -18,14 +17,12 @@
 		$('input:radio[name=distrito]').change(hiddenFather);
 	});
 
-
-
     $("#createForm, #editForm").validate({
         rules: {
-                tipo: {
+                cuenta_destino: {
                     required: true,
                 },
-                numeroTarjeta: {
+                monto: {
                     required: true,
                 },
 				        fechaVencimiento: {
@@ -34,16 +31,12 @@
 
              },
             messages: {
-                tipo: {
+                cuenta_destino: {
                     required: 'Por favor Escoja una opción',
                 },
-                numeroTarjeta: {
+            monto: {
                     required: "Por favor ingrese la dirección.",
                 },
-								fechaVencimiento{
-									required: "Por favor ingrese la fecha",
-
-								}
 
             }
 			submitHandler: function(form) {
