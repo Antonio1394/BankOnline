@@ -9,7 +9,6 @@
             </div>
             <div class="pull-left info">
                 <p>Hola</p>
-
                 <a href="#"><i class="fa fa-circle text-success"></i> En linea</a>
             </div>
         </div>
@@ -31,6 +30,12 @@
                   <i class="fa fa-money"></i> <span> Cuentas</span>
               </a>
           </li>
+          <li>
+              <a href="{{ url('admin/retiros') }}">
+                  <i class="fa fa-arrow-up"></i> <span>Retiros</span>
+              </a>
+          </li>
+
           @else
           <li>
               <a href="{{ url('admin/tarjetas') }}">

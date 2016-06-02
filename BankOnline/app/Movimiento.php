@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Movimiento extends Model
 {
-  protected $table = 'movimiento';
+  protected $table = 'movimientos';
   protected $fillable = ['idCuenta',
                          'idTipo',
                          'cuenta_origen',
@@ -28,5 +28,5 @@ class Movimiento extends Model
 	{
 		return $this->hasOne('App\TipoMovimiento','id','idTipo');
 	}
-  
+
 }

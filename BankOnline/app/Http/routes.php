@@ -20,6 +20,7 @@ Route::group(['prefix' => 'admin', 'namespace' => '\Admin', 'middleware' => 'aut
     Route::resource('tarjetas','TarjetasController');
     Route::get('MostrarTarjeta/{id}',['as'=>'admin/MostrarTarjeta','uses'=>'TarjetasController@mostrar']);
     Route::group(['middleware' => 'superAdmin'], function () {
+        Route::resource('retiros','RetiroController');
         Route::resource('clientes', 'CustomersController');
         Route::put('cuenta/activate/{id}',['as'=>'admin/cuenta/activate','uses'=>'AccountController@activate']);
         Route::resource('cuentas', 'AccountController');
