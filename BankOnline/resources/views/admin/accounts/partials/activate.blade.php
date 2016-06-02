@@ -1,4 +1,4 @@
-{!!Form::open(['route' => ['admin/cliente/activate',$id], 'method' => 'PUT'])!!}
+{!!Form::open(['route' => ['admin/cuenta/activate',$id], 'method' => 'PUT'])!!}
     <h4>
         Desea Activar el Usuario?
     </h4>
