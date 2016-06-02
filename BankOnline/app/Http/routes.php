@@ -25,6 +25,7 @@ Route::group(['prefix' => 'admin', 'namespace' => '\Admin', 'middleware' => 'aut
         Route::put('cuenta/activate/{id}',['as'=>'admin/cuenta/activate','uses'=>'AccountController@activate']);
         Route::get('cuenta/new/{id}', 'AccountController@new');
         Route::resource('cuentas', 'AccountController');
+        Route::resource('depositos', 'DepositosController');
     });
 
 });
