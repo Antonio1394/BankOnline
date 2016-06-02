@@ -7,13 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Http\Requests\CustomersRequest;
-use App\Http\Requests\CustomersEditRequest;
+use App\Cuenta;
 
-use App\TipoCuenta;
-use App\Cliente;
-
-class CustomersController extends BaseCustomersController
+class AccountController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,8 +18,7 @@ class CustomersController extends BaseCustomersController
      */
     public function index()
     {
-        $customers = Cliente::all();
-        return view('admin/customers/index', compact('customers'));
+        //
     }
 
     /**
@@ -33,8 +28,7 @@ class CustomersController extends BaseCustomersController
      */
     public function create()
     {
-        $typeAccount = TipoCuenta::lists('descripcion', 'id');
-        return view('admin/customers/create', compact('typeAccount'));
+        //
     }
 
     /**
@@ -43,14 +37,9 @@ class CustomersController extends BaseCustomersController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CustomersRequest $request)
+    public function store(Request $request)
     {
-        $this->begin($request);
-        $this->customersSave();
-        $this->accountSave();
-        $this->userSave();
-
-        return redirect('/admin/clientes')->with('message', 'Cliente creado correctamente.');
+        //
     }
 
     /**
@@ -61,9 +50,13 @@ class CustomersController extends BaseCustomersController
      */
     public function show($id)
     {
-        //
+        $account=Cuenta::find($id);
+        if ( $account->estado == true ) {
+          return view('admin.customers.partials.deleteForm')->with('id', $id);
+        }else {
+          return view('admin.customers.partials.activate')->with('id', $id);
+        }
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -73,8 +66,7 @@ class CustomersController extends BaseCustomersController
      */
     public function edit($id)
     {
-        $customer = Cliente::find($id);
-        return view('admin/customers/edit', compact('customer'));
+        //
     }
 
     /**
@@ -84,13 +76,9 @@ class CustomersController extends BaseCustomersController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CustomersEditRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $customer = Cliente::find($id);
-        $customer->fill($request->all());
-        $customer->save();
-
-        return redirect('/admin/clientes')->with('message','Cliente Editado Correctamente');
+        //
     }
 
     /**
@@ -101,6 +89,17 @@ class CustomersController extends BaseCustomersController
      */
     public function destroy($id)
     {
-        //
+        $account = Cuenta::find($id);///obtengo el Usuario
+        $account->estado = false;// Cambio el Estaado del Paciente
+        $account->save();
+        return redirect('/admin/clientes')->with('message','Temporalmente la cuenta fue dada de baja');
+    }
+
+    public function activate($id)
+    {
+        $account = Cuenta::find($id);///obtengo el Usuario
+        $account->estado = true;// Cambio el Estaado del Paciente
+        $account->save();
+        return redirect('/admin/clientes')->with('message','Cuenta Activada.');
     }
 }
