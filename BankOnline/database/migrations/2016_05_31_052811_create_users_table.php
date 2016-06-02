@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('password', 60);
             $table->boolean('estado');
             $table->integer('idCliente')->unsigned();
+            $table->rememberToken();
+            
             $table->foreign('idCliente')
                   ->references('id')
                   ->on('clientes');
