@@ -19,7 +19,7 @@ class Movimiento extends Model
   public $relations = ['Cuenta',
                        'tipo'];
 
-	public function cliente()
+	public function cuenta()
 	{
 		return $this->hasOne('App\Cuenta','id','idCuenta');
 	}

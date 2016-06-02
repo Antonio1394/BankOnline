@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Movimiento;
+use App\Cuenta;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -16,7 +17,7 @@ class RetiroController extends Controller
      */
     public function index()
     {
-        $retiro=Movimiento::where('idTipo','=','1')->get();
+        $retiro=Movimiento::where('idTipo','=','2')->get();
         return view('admin.retiros.list',compact('retiro'));
     }
 
@@ -27,7 +28,7 @@ class RetiroController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.retiros.partials.createForm');
     }
 
     /**
@@ -38,7 +39,19 @@ class RetiroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $retiro=new Movimiento;
+        $idCuenta=Cuenta::where('noCuenta','=',$request->cuenta_destino)->get();
+
+        $retiro->idCuenta=$idCuenta[0]->id;
+        $retiro->idtipo=$request->idtipo;
+        $retiro->cuenta_origen=$request->cuenta_origen;
+        $retiro->cuenta_destino=$request->cuenta_destino;
+        $retiro->monto=$request->monto;
+        $retiro->fecha= date('d/m/Y');
+        $retiro->save();
+
+        return redirect('/admin/retiros')->with('message','Retiro Generado Exitosamente');
+
     }
 
     /**
