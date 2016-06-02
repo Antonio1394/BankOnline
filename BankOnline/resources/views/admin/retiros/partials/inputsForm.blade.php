@@ -24,10 +24,7 @@
                 },
                 monto: {
                     required: true,
-                },
-				        fechaVencimiento: {
-                  required: true,
-				        },
+                }
 
              },
             messages: {
@@ -36,7 +33,7 @@
                 },
             monto: {
                     required: "Por favor ingrese la dirección.",
-                },
+                }
 
             }
 			submitHandler: function(form) {

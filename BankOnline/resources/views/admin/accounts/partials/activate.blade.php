@@ -1,6 +1,6 @@
 {!!Form::open(['route' => ['admin/cuenta/activate',$id], 'method' => 'PUT'])!!}
     <h4>
-        Desea Activar el Usuario?
+        Desea Activar la Cuenta?
     </h4>
     <div class="modal-footer">
         {!!Form::submit('Si', ['class' => 'btn btn-primary'])!!}

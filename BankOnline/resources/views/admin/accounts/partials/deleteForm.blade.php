@@ -1,6 +1,6 @@
 {!!Form::open(['route' => ['admin.cuentas.destroy', $id], 'method' => 'DELETE'])!!}
     <h4>
-        Desea eliminar este registro?
+        Desea eliminar esta Cuenta?
     </h4>
     <div class="modal-footer">
         {!!Form::submit('Si', ['class' => 'btn btn-primary'])!!}
