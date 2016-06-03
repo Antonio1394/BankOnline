@@ -6,8 +6,8 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Clientes
-                <small>Estas en la pagina de clientes</small>
+                Tarjetas
+                <small>Listado de Tarjetas</small>
             </h1>
         </section>
 
@@ -20,8 +20,7 @@
               <div class="box-header">
                   <div class="content">
                       <div class="row">
-                          <div class="col-md-6"><h3 class="box-title">Clientes</h3></div>
-                          <div class="col-md-6 text-right"><a href="{{ url('admin/clientes/create') }}" class="btn btn-primary" style="color: white;">Crear Cliente</a></div>
+                          <div class="col-md-6"><h3 class="box-title">Tarjetas</h3></div>
                       </div>
                   </div>
               </div><!-- /.box-header -->

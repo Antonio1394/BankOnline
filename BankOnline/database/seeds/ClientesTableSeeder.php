@@ -12,8 +12,8 @@ class ClientesTableSeeder extends Seeder
     public function run()
     {
         $cliente = new Cliente;
-        $cliente->nombre='Juan Antonio';
-        $cliente->apellido='Rivera Merida';
+        $cliente->nombre='Rony Carlos';
+        $cliente->apellido='Gonzales Tunchez';
         $cliente->dpi='2631756261101';
         $cliente->email = 'pepe@gmail.com';
         $cliente->direccion='Retalhuleu';
@@ -22,7 +22,7 @@ class ClientesTableSeeder extends Seeder
         $cliente->save();
 
         $cliente = new Cliente;
-        $cliente->nombre='Pablo Felix';
+        $cliente->nombre='Pablo';
         $cliente->apellido='Mendez Argueta';
         $cliente->dpi='2631756891104';
         $cliente->email = 'pablo@gmail.com';
