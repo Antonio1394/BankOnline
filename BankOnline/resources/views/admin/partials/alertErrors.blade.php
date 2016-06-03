@@ -15,3 +15,16 @@
         </div>
     </div>
 @endif
+
+@if( Session::has('error') )
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="alert alert-danger alert-dismissable homeloader wow animated fadeInDown">
+                <i class="fa fa-ban"></i>
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <b>Alerta!</b> {{Session::get('error')}}
+            </div>
+        </div>
+    </div>
+@endif

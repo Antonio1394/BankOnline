@@ -46,8 +46,8 @@ class DepositosController extends Controller
         $numberAccount = Cuenta::where('noCuenta', $request->cuenta_destino)->take(1)->get();
         $deposito = new Movimiento();
 
-        if( $numberAccount->count() == 0 )
-            return redirect('admin');
+        if( $numberAccount->count() == 0 or $numberAccount[0]->estado == false )
+            return redirect('admin/depositos')->with('error', 'La cuenta no existe o esta desactiva.');
         else {
             $deposito->idCuenta = $numberAccount[0]->id;
             $deposito->cuenta_destino = $numberAccount[0]->id;
@@ -55,9 +55,13 @@ class DepositosController extends Controller
             $deposito->cuenta_origen = 0;
             $deposito->monto = $request->monto;
             $deposito->fecha = $request->fecha;
-
             $deposito->save();
-            return redirect('admin');
+
+            $account = Cuenta::find($numberAccount[0]->id);
+            $account->monto = $account->monto + $request->monto;
+            $account->save();
+
+            return redirect('admin/depositos')->with('message', 'Deposito realizado correctamente.');
         }
     }
 
