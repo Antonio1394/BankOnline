@@ -32,7 +32,7 @@
                               <th>No.</th>
                               <th># de Cuenta</th>
                               <th>Monto</th>
-                              <th>Tipo</th>
+                              <th>Tipo Cuenta</th>
                               <th>Fecha de Operacion</th>
                               <th class="text-center">Acciones</th>
                           </tr>
@@ -41,9 +41,9 @@
                         @foreach($depositos as  $key => $data)
                            <tr>
                                <td>{{ $key + 1   }}</td>
-                               <td> </td>
+                               <td> {{ $data->Cuenta->noCuenta }} </td>
                                <td>{{ $data->monto }} </td>
-                               <td> </td>
+                               <td> {{ $data->Cuenta->tipo->descripcion }} </td>
                                <td>{{ $data->fecha }} </td>
                                <td class="text-center">
                                    {{-- <button type="button" name="edit" class="btn btn-info btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="centros/{{ $customer->cliente->id }}/edit" data-title="Actualizar Centro">Ver Movimientos</button> --}}
