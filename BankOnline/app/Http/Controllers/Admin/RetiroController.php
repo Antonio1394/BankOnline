@@ -98,4 +98,9 @@ class RetiroController extends Controller
     {
         //
     }
+
+    public function verificarCuenta($cuenta)
+    {
+      
+    }
 }

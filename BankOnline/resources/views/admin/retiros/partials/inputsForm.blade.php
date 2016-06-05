@@ -12,33 +12,25 @@
 </div>
 
 <script type="text/javascript">
-	$(document).ready(function () {
-		hiddenFather();
-		$('input:radio[name=distrito]').change(hiddenFather);
-	});
+$("#createForm").validate({
+		rules: {
+						monto: {
+							number: true
+						}
+				},///Fin de Reglas
+		messages: {
+						cuenta_destino: {
+								required: "Por favor ingrese el No. Cuenta."
+						},
+						monto: {
+								required: "Por favor ingrese el monto.",
+								number: "Por favor ingrese solo numeros."
+						}
+				},///fin de messages
+				submitHandler: function(form){
+					$('#createForm .btn-primary').prop('disabled', true);
+					form.submit();
+				}///Fin Funcion Submit
+			});
 
-    $("#createForm, #editForm").validate({
-        rules: {
-                cuenta_destino: {
-                    required: true,
-                },
-                monto: {
-                    required: true,
-                }
-
-             },
-            messages: {
-                cuenta_destino: {
-                    required: 'Por favor Escoja una opción',
-                },
-            monto: {
-                    required: "Por favor ingrese la dirección.",
-                }
-
-            }
-			submitHandler: function(form) {
-				$("#generalModal .btn-primary").prop('disabled', true);
-				form.submit();
-			}
-    });
 </script>
