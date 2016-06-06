@@ -10,6 +10,8 @@
 	<label for="">Monto a Retirar</label>
 	{!!Form::text('monto',null, array('class' => 'form-control', 'placeholder' => 'Inserta el Monto', 'required' => 'required','id'=>'monto'))!!}
 </div>
+<input type="hidden" name="fecha" value="{{ \Carbon\Carbon::now() }}">
+
 <label class="form-group" id="msg" style="display:none;"></label>
 
 

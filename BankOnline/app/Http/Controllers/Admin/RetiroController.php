@@ -46,7 +46,7 @@ class RetiroController extends Controller
         $retiro->cuenta_origen=$request->cuenta_origen;
         $retiro->cuenta_destino=$request->cuenta_destino;
         $retiro->monto=$request->monto;
-        $retiro->fecha= date('d/m/Y');
+        $retiro->fecha= $request->fecha;
         $retiro->save();
         $account = Cuenta::find($idCuenta[0]->id);
         $account->monto = $account->monto - $request->monto;
