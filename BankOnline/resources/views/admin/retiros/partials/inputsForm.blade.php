@@ -29,7 +29,7 @@ $("#createForm").validate({
 				},///fin de messages
 				submitHandler: function(form){
 					$.ajax({
-                url: 'VerificarCuenta/' + $( "#destino" ).val(),
+                url: 'retiros/VerificarCuenta/' + $( "#destino" ).val(),
                 type: "get",
                  success: function(response){
                    if(response=='si'){
@@ -41,8 +41,7 @@ $("#createForm").validate({
                  }
               });
 
-					$('#createForm .btn-primary').prop('disabled', true);
-				
+
 				}///Fin Funcion Submit
 			});
 
