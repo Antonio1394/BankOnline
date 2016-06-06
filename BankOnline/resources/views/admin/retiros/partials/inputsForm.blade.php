@@ -8,8 +8,10 @@
 </div>
 <div class="form-group">
 	<label for="">Monto a Retirar</label>
-	{!!Form::text('monto',null, array('class' => 'form-control', 'placeholder' => 'Inserta el Monto', 'required' => 'required'))!!}
+	{!!Form::text('monto',null, array('class' => 'form-control', 'placeholder' => 'Inserta el Monto', 'required' => 'required','id'=>'monto'))!!}
 </div>
+<label class="form-group" id="msg" style="display:none;"></label>
+
 
 <script type="text/javascript">
 $("#createForm").validate({
@@ -28,19 +30,34 @@ $("#createForm").validate({
 						}
 				},///fin de messages
 				submitHandler: function(form){
+					$('#msg').css('display', 'none');
 					$.ajax({
-                url: 'retiros/VerificarCuenta/' + $( "#destino" ).val(),
+                url: 'retiros/VerificarCuenta/' + $( "#destino" ).val()+'/'+$( "#monto" ).val(),
                 type: "get",
                  success: function(response){
+
 									 if(response=='noExiste'){
-										 alert('La Cuenta no existe');
+										 $("#msg").html('Esta Cuenta no Existe');
+                           $('#msg').css('display', 'inline');
+                           $('#msg').css('color', '#f56954');
 									 }
-                   if(response=='no'){
-										 alert('La cuenta esta desactivada')
-                   }//Fin de else Principal
-                   else {
-										 return response;
-                   }
+									 else{
+											 if(response=='no'){
+												 $("#msg").html('La cuenta Actualmente Esta desactivada');
+ 	                            $('#msg').css('display', 'inline');
+ 	                            $('#msg').css('color', '#f56954');
+											 }//Fin de else Principal
+											 else{
+												 if(response=='menor'){
+													 form.submit();
+												 }else{
+													 $("#msg").html('El monto que Desea retirar Es mayor al saldo en la Cuenta');
+													 $('#msg').css('display', 'inline');
+													 $('#msg').css('color', '#f56954');
+												 }
+											 }
+
+										 }
                  }
               });
 

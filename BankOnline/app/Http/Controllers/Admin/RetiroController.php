@@ -41,7 +41,6 @@ class RetiroController extends Controller
     {
         $retiro=new Movimiento;
         $idCuenta=Cuenta::where('noCuenta','=',$request->cuenta_destino)->get();
-
         $retiro->idCuenta=$idCuenta[0]->id;
         $retiro->idtipo=$request->idtipo;
         $retiro->cuenta_origen=$request->cuenta_origen;
@@ -49,6 +48,11 @@ class RetiroController extends Controller
         $retiro->monto=$request->monto;
         $retiro->fecha= date('d/m/Y');
         $retiro->save();
+        $account = Cuenta::find($idCuenta[0]->id);
+        $account->monto = $account->monto - $request->monto;
+        $account->save();
+
+
 
         return redirect('/admin/retiros')->with('message','Retiro Generado Exitosamente');
 
@@ -99,21 +103,22 @@ class RetiroController extends Controller
         //
     }
 
-    public function verificarCuenta($cuenta)
+    public function verificarCuenta($cuenta,$monto)
     {
-      $cuenta=Cuenta::where('noCuenta','=',$cuenta)->count();
+      $valor=Cuenta::where('noCuenta','=',$cuenta)->count();
       $estado=Cuenta::where('noCuenta','=',$cuenta)->get();
 
-      if($cuenta==0){
-        return 'noExiste';
-        
-        if($estado[0]->estado==true){
-          return $estado;
-        }else{
-          return 'no';
-        }
-      }
-
-
+      if($valor==0){
+            return 'noExiste';
+      }else{
+            if($estado[0]->estado==0){
+            return 'no';
+          }//fin del if de estado
+          else{
+            if($monto<=$estado[0]->monto){
+              return 'menor';
+            }
+          }
+      }///else principal
     }
 }
