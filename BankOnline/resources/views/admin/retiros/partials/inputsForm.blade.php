@@ -3,7 +3,7 @@
 	{!! Form::hidden('idtipo', 2, ['id' => 'user_id']) !!}
 	{!! Form::hidden('cuenta_origen',0, ['id' => 'user_id']) !!}
 
-	<label for="">Numero de Cuenta</label>
+<label for="">Numero de Cuenta</label>
 	{!!Form::text('cuenta_destino', null, array('class' => 'form-control', 'placeholder' => 'Inserta el número de Cuenta', 'required' => 'required','id'=>'destino'))!!}
 </div>
 <div class="form-group">
@@ -32,11 +32,14 @@ $("#createForm").validate({
                 url: 'retiros/VerificarCuenta/' + $( "#destino" ).val(),
                 type: "get",
                  success: function(response){
-                   if(response=='si'){
-										 alert('holaa');
+									 if(response=='noExiste'){
+										 alert('La Cuenta no existe');
+									 }
+                   if(response=='no'){
+										 alert('La cuenta esta desactivada')
                    }//Fin de else Principal
                    else {
-
+										 return response;
                    }
                  }
               });

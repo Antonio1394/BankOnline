@@ -101,6 +101,19 @@ class RetiroController extends Controller
 
     public function verificarCuenta($cuenta)
     {
-      return 'si';
+      $cuenta=Cuenta::where('noCuenta','=',$cuenta)->count();
+      $estado=Cuenta::where('noCuenta','=',$cuenta)->get();
+
+      if($cuenta==0){
+        return 'noExiste';
+        
+        if($estado[0]->estado==true){
+          return $estado;
+        }else{
+          return 'no';
+        }
+      }
+
+
     }
 }
