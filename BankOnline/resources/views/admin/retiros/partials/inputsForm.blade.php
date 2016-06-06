@@ -4,7 +4,7 @@
 	{!! Form::hidden('cuenta_origen',0, ['id' => 'user_id']) !!}
 
 	<label for="">Numero de Cuenta</label>
-	{!!Form::text('cuenta_destino', null, array('class' => 'form-control', 'placeholder' => 'Inserta el número de Cuenta', 'required' => 'required'))!!}
+	{!!Form::text('cuenta_destino', null, array('class' => 'form-control', 'placeholder' => 'Inserta el número de Cuenta', 'required' => 'required','id'=>'destino'))!!}
 </div>
 <div class="form-group">
 	<label for="">Monto a Retirar</label>
@@ -28,8 +28,21 @@ $("#createForm").validate({
 						}
 				},///fin de messages
 				submitHandler: function(form){
+					$.ajax({
+                url: 'VerificarCuenta/' + $( "#destino" ).val(),
+                type: "get",
+                 success: function(response){
+                   if(response=='si'){
+										 alert('holaa');
+                   }//Fin de else Principal
+                   else {
+
+                   }
+                 }
+              });
+
 					$('#createForm .btn-primary').prop('disabled', true);
-					form.submit();
+				
 				}///Fin Funcion Submit
 			});
 
