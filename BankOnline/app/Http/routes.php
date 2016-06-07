@@ -18,7 +18,7 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::group(['prefix' => 'admin', 'namespace' => '\Admin', 'middleware' => 'auth'], function () {
     Route::get('/', 'ClienteController@index');
 
-
+    Route::resource('transacciones','TransaccionesController');
     Route::get('MostrarTarjeta/{id}',['as'=>'admin/MostrarTarjeta','uses'=>'TarjetasController@mostrar']);
 
     Route::group(['middleware' => 'superAdmin'], function () {

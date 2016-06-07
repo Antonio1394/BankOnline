@@ -40,7 +40,6 @@
                   <i class="fa fa-arrow-down"></i> <span>Depositos</span>
               </a>
           </li>
-
           @else
           <li>
               <a href="{{ url('admin/tarjetas') }}">
@@ -48,7 +47,7 @@
               </a>
           </li>
           <li>
-              <a href="{{ url('admin/depositos') }}">
+              <a href="{{ url('admin/transacciones') }}">
                   <i class="fa fa-exchange"></i> <span>Transferencias</span>
               </a>
           </li>
