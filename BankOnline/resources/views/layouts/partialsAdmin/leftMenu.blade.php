@@ -22,7 +22,7 @@
           </li>
           <li>
               <a href="{{ url('admin/users') }}">
-                  <i class="fa fa-users"></i> <span> Cuentas</span>
+                  <i class="fa  fa-sign-in"></i> <span> Cuentas</span>
               </a>
           </li>
           <li>
@@ -55,6 +55,11 @@
           <li>
               <a href="{{ url('admin/depositos') }}">
                   <i class="fa fa-exchange"></i> <span>Transferencias</span>
+              </a>
+          </li>
+          <li>
+              <a href="{{ url('admin/servicios') }}">
+                  <i class="fa fa-exchange"></i> <span>Servicios</span>
               </a>
           </li>
         </ul>
