@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\User;
+use App\Cliente;
+
 class UsersController extends Controller
 {
     /**
@@ -23,7 +26,8 @@ class UsersController extends Controller
 
     public function index()
     {
-
+        $users = User::all();
+        return view('admin.customers.listUsers', compact('users'));
     }
 
     /**
@@ -66,7 +70,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $customer = Cliente::find($id);
+        return view('admin.customers.partials.changePassword', compact('customer'));
     }
 
     /**
@@ -78,7 +83,11 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->password = $request->password;
+        $user->save();
+
+        return redirect('/admin/users')->with('message','Cuenta Editada Correctamente');
     }
 
     /**

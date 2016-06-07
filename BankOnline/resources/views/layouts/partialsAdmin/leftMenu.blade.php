@@ -21,6 +21,11 @@
               </a>
           </li>
           <li>
+              <a href="{{ url('admin/users') }}">
+                  <i class="fa fa-users"></i> <span> Cuentas</span>
+              </a>
+          </li>
+          <li>
               <a href="{{ url('admin/tarjetas') }}">
                   <i class="fa fa-credit-card-alt"></i> <span> Tarjetas</span>
               </a>
