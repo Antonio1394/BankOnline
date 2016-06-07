@@ -52,6 +52,11 @@
                   <i class="fa fa-credit-card-alt"></i> <span> Cuentas</span>
               </a>
           </li>
+          <li>
+              <a href="{{ url('admin/depositos') }}">
+                  <i class="fa fa-exchange"></i> <span>Transferencias</span>
+              </a>
+          </li>
         </ul>
         @endif
 

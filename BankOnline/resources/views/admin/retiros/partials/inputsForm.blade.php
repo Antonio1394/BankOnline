@@ -3,42 +3,68 @@
 	{!! Form::hidden('idtipo', 2, ['id' => 'user_id']) !!}
 	{!! Form::hidden('cuenta_origen',0, ['id' => 'user_id']) !!}
 
-	<label for="">Numero de Cuenta</label>
-	{!!Form::text('cuenta_destino', null, array('class' => 'form-control', 'placeholder' => 'Inserta el número de Cuenta', 'required' => 'required'))!!}
+<label for="">Numero de Cuenta</label>
+	{!!Form::text('cuenta_destino', null, array('class' => 'form-control', 'placeholder' => 'Inserta el número de Cuenta', 'required' => 'required','id'=>'destino'))!!}
 </div>
 <div class="form-group">
 	<label for="">Monto a Retirar</label>
-	{!!Form::text('monto',null, array('class' => 'form-control', 'placeholder' => 'Inserta el Monto', 'required' => 'required'))!!}
+	{!!Form::text('monto',null, array('class' => 'form-control', 'placeholder' => 'Inserta el Monto', 'required' => 'required','id'=>'monto'))!!}
 </div>
+<input type="hidden" name="fecha" value="{{ \Carbon\Carbon::now() }}">
+
+<label class="form-group" id="msg" style="display:none;"></label>
+
 
 <script type="text/javascript">
-	$(document).ready(function () {
-		hiddenFather();
-		$('input:radio[name=distrito]').change(hiddenFather);
-	});
+$("#createForm").validate({
+		rules: {
+						monto: {
+							number: true
+						}
+				},///Fin de Reglas
+		messages: {
+						cuenta_destino: {
+								required: "Por favor ingrese el No. Cuenta."
+						},
+						monto: {
+								required: "Por favor ingrese el monto.",
+								number: "Por favor ingrese solo numeros."
+						}
+				},///fin de messages
+				submitHandler: function(form){
+					$('#msg').css('display', 'none');
+					$.ajax({
+                url: 'retiros/VerificarCuenta/' + $( "#destino" ).val()+'/'+$( "#monto" ).val(),
+                type: "get",
+                 success: function(response){
 
-    $("#createForm, #editForm").validate({
-        rules: {
-                cuenta_destino: {
-                    required: true,
-                },
-                monto: {
-                    required: true,
-                }
+									 if(response=='noExiste'){
+										 $("#msg").html('Esta Cuenta no Existe');
+                           $('#msg').css('display', 'inline');
+                           $('#msg').css('color', '#f56954');
+									 }
+									 else{
+											 if(response=='no'){
+												 $("#msg").html('La cuenta Actualmente Esta desactivada');
+ 	                            $('#msg').css('display', 'inline');
+ 	                            $('#msg').css('color', '#f56954');
+											 }//Fin de else Principal
+											 else{
+												 if(response=='menor'){
+													 form.submit();
+												 }else{
+													 $("#msg").html('El monto que Desea retirar Es mayor al saldo en la Cuenta');
+													 $('#msg').css('display', 'inline');
+													 $('#msg').css('color', '#f56954');
+												 }
+											 }
 
-             },
-            messages: {
-                cuenta_destino: {
-                    required: 'Por favor Escoja una opción',
-                },
-            monto: {
-                    required: "Por favor ingrese la dirección.",
-                }
+										 }
+                 }
+              });
 
-            }
-			submitHandler: function(form) {
-				$("#generalModal .btn-primary").prop('disabled', true);
-				form.submit();
-			}
-    });
+
+				}///Fin Funcion Submit
+			});
+
 </script>

@@ -16,7 +16,7 @@
         <section class="content">
             @include('admin.partials.alertSuccess')
             @include('admin.partials.alertErrors')
-            
+
             <div class="box box-primary">
                 <div class="box-header">
                     <div class="content">
@@ -34,7 +34,6 @@
                                     <label for="cuenta_destino">No. Cuenta:</label>
                                 	{!!Form::text('cuenta_destino', null, array('class' => 'form-control', 'placeholder' => 'Ingrese el No. Cuenta', 'required' => 'required'))!!}
                                 </div>
-
                                 <div class="form-group col-md-5">
                                 	<label for="monto">Monto</label>
                                 	{!!Form::number('monto', null, array('class' => 'form-control', 'placeholder' => 'Ingrese el monto', 'required' => 'required', 'step' => 'any'))!!}
