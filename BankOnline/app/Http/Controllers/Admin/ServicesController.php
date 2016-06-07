@@ -7,27 +7,27 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\User;
 use App\Cliente;
+use App\Servicio;
 
-class UsersController extends Controller
+class ServicesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-     public function begin()
+    public function index(Request $request)
     {
+        $services = Servicio::whereHas('Tarjeta', function($query) use ($request) {
+            $query->whereHas('Cuenta', function($queryTwo) use ($request) {
+                $queryTwo->whereHas('cliente', function($queryThree) use ($request) {
+                    $queryThree->where('idCliente', $request->user()->idCliente);
+                });
+            });
+        });
 
-        return view('admin.index');
-    }
-
-    public function index()
-    {
-        $users = User::all();
-        return view('admin.customers.listUsers', compact('users'));
+        return view('admin.services.index', compact('services'));
     }
 
     /**
@@ -70,8 +70,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $customer = Cliente::find($id);
-        return view('admin.customers.partials.changePassword', compact('customer'));
+        //
     }
 
     /**
@@ -83,11 +82,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
-        $user->password = $request->password;
-        $user->save();
-
-        return redirect('/admin/users')->with('message','Cuenta Editada Correctamente');
+        //
     }
 
     /**

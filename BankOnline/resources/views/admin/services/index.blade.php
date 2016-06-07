@@ -6,8 +6,8 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Depositos
-                <small>Estas en la pagina de depositos</small>
+                Servicios
+                <small>Estas en la pagina de servicios</small>
             </h1>
         </section>
 
@@ -20,8 +20,8 @@
               <div class="box-header">
                   <div class="content">
                       <div class="row">
-                          <div class="col-md-6"><h3 class="box-title">Depositos</h3></div>
-                          <div class="col-md-6 text-right"><a href="{{ url('admin/depositos/create') }}" class="btn btn-primary" style="color: white;">Crear Depositos</a></div>
+                          <div class="col-md-6"><h3 class="box-title">Servicios</h3></div>
+                          <div class="col-md-6 text-right"><a href="{{ url('admin/servicios/create') }}" class="btn btn-primary" style="color: white;">Crear Servicio</a></div>
                       </div>
                   </div>
               </div><!-- /.box-header -->
@@ -30,20 +30,23 @@
                       <thead>
                           <tr>
                               <th>No.</th>
-                              <th># de Cuenta</th>
+                              <th>Tarjeta</th>
+                              <th>Fecha pago</th>
                               <th>Monto</th>
-                              <th>Tipo Cuenta</th>
-                              <th>Fecha de Operacion</th>
+                              <th class="text-center">Acciones</th>
                           </tr>
                       </thead>
                       <tbody>
-                        @foreach($depositos as  $key => $data)
+                        @foreach($services as  $key => $data)
                            <tr>
                                <td>{{ $key + 1   }}</td>
-                               <td> {{ $data->Cuenta->noCuenta }} </td>
-                               <td>{{ $data->monto }} </td>
-                               <td> {{ $data->Cuenta->tipo->descripcion }} </td>
-                               <td>{{ $data->fecha }} </td>
+                               <td> {{ $data->Tarjeta->numeroTarjeta }} </td>
+                               <td>{{ $data->fechaPago }} </td>
+                               <td> {{ $data->monto}} </td>
+                               <td class="text-center">
+                                   {{-- <button type="button" name="edit" class="btn btn-info btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="centros/{{ $customer->cliente->id }}/edit" data-title="Actualizar Centro">Ver Movimientos</button> --}}
+
+                               </td>
                            </tr>
                        @endforeach
                       </tbody>

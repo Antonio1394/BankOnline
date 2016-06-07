@@ -21,6 +21,11 @@
               </a>
           </li>
           <li>
+              <a href="{{ url('admin/users') }}">
+                  <i class="fa  fa-sign-in"></i> <span> Cuentas</span>
+              </a>
+          </li>
+          <li>
               <a href="{{ url('admin/tarjetas') }}">
                   <i class="fa fa-credit-card-alt"></i> <span> Tarjetas</span>
               </a>
@@ -49,6 +54,11 @@
           <li>
               <a href="{{ url('admin/transacciones') }}">
                   <i class="fa fa-exchange"></i> <span>Transferencias</span>
+              </a>
+          </li>
+          <li>
+              <a href="{{ url('admin/servicios') }}">
+                  <i class="fa fa-exchange"></i> <span>Servicios</span>
               </a>
           </li>
         </ul>
