@@ -59,7 +59,7 @@
                                         <div class="icon">
                                             <i class="fa fa-shopping-bag"></i>
                                         </div>
-                                        <a href="#" class="small-box-footer">
+                                        <a href="{{ url('admin/servicios/' . $data->id . '/edit') }}" class="small-box-footer">
                                             Pagar <i class="fa fa-arrow-circle-right"></i>
                                         </a>
                                     </div>

@@ -91,7 +91,11 @@ class ServicesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $payment = PagoServicio::find($id);
+        $payment->estado = true;
+        $payment->save();
+
+        return redirect('/admin/servicios')->with('message', 'Servicio Pagado');
     }
 
     /**
