@@ -32,6 +32,44 @@
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
 
+            <div class="box box-primary">
+                <div class="box-header">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-md-6"><h3 class="box-title">Servicios</h3></div>
+                        </div>
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="content">
+                        <!-- Small boxes (Stat box) -->
+                        <div class="row">
+                            @foreach($alertServers as  $key => $data)
+                                <div class="col-lg-3 col-xs-6">
+                                    <!-- small box -->
+                                    <div class="small-box bg-aqua">
+                                        <div class="inner">
+                                            <h3>
+                                                {{ $data->Servicio->monto }}
+                                            </h3>
+                                            <p>
+                                                {{ $data->Servicio->descripcion }}
+                                            </p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fa fa-shopping-bag"></i>
+                                        </div>
+                                        <a href="{{ url('admin/servicios/' . $data->id . '/edit') }}" class="small-box-footer">
+                                            Pagar <i class="fa fa-arrow-circle-right"></i>
+                                        </a>
+                                    </div>
+                                </div><!-- ./col -->
+                            @endforeach
+                        </div><!-- /.row -->
+                    </div>
+                </div>
+            </div>
+
         </section><!-- /.content -->
     </aside><!-- /.right-side -->
 @endsection
