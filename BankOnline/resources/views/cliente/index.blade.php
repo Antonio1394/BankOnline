@@ -50,10 +50,10 @@
                                     <div class="small-box bg-aqua">
                                         <div class="inner">
                                             <h3>
-                                                {{ $data->monto }}
+                                                {{ $data->Servicio->monto }}
                                             </h3>
                                             <p>
-                                                {{ $data->descripcion }}
+                                                {{ $data->Servicio->descripcion }}
                                             </p>
                                         </div>
                                         <div class="icon">

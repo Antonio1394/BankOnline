@@ -10,6 +10,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Servicio;
+use App\PagoServicio;
 
 class ClienteController extends Controller
 {
@@ -36,14 +37,26 @@ class ClienteController extends Controller
 
         $currentDate = \Carbon\Carbon::now();
         $day = date('d', strtotime($currentDate)) - 3;
-        $alertServers;
+        $month = date('m', strtotime($currentDate));
+        $year = date('Y', strtotime($currentDate));
+
+        $alertServers = [];
 
         foreach ($services as $key => $value) {
             $servicesDay = date('d', strtotime($value->fechaPago)) - 3;
 
             if ( $day == $servicesDay ) {
-                $alertServers[$key] = $value;
+                $payment = PagoServicio::where('idServicio', $value->id)->get();
+
+                foreach ($payment as $item => $data) {
+                    if ( $data->mes == $month
+                            and $data->año == $year
+                            and $data->estado == false ) {
+                        $alertServers[$key] = $data;
+                    }
+                }
             }
+
         }
 
         return $alertServers;

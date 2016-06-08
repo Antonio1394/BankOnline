@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Cliente;
 use App\Servicio;
 use App\Tarjeta;
+use App\PagoServicio;
 
 class ServicesController extends Controller
 {
@@ -54,6 +55,19 @@ class ServicesController extends Controller
         $service = new Servicio;
         $service->fill($request->all());
         $service->save();
+
+        $currentDate = \Carbon\Carbon::now();
+        $month = date('m', strtotime($currentDate));
+        $year = date('Y', strtotime($currentDate));
+
+        for ($i=$month; $i <= 12; $i++) {
+            $payment = new PagoServicio;
+            $payment->idServicio = $service->id;
+            $payment->año = $year;
+            $payment->mes = $i;
+            $payment->estado = false;
+            $payment->save();
+        }
 
         return redirect('/admin/servicios')->with('message', 'Servicio creado correctamente.');
     }
