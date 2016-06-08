@@ -16,7 +16,7 @@ class TransaccionesController extends Controller
      */
     public function index()
     {
-
+      return view('cliente.transacciones.list');
     }
 
     /**
