@@ -19,15 +19,13 @@
                     <div class="content">
                         <div class="row">
                             <div class="col-md-6">
-                              <h4>Nombre:  {{$Cliente->nombre.$Cliente->apellido}}</h4>
-                              <h4>DPI:  {{$Cliente->dpi}}</h4>
-                              <h4>Correo:  {{$Cliente->email}}</h4>
-                              <h4>Dirección:  {{$Cliente->direccion}}</h4>
-                              <h4>Teléfno:  {{$Cliente->telefono}}</h4>
-                              <h4>Beneficiario:  {{$Cliente->beneficiario}}</h4>
-
-
-
+                              <h4><strong>Nombre: </strong>{{$Cliente->nombre.$Cliente->apellido}}</h4>
+                              <h4><strong>DPI: </strong>  {{$Cliente->dpi}}</h4>
+                              <h4><strong>Correo: </strong>  {{$Cliente->email}}</h4>
+                              <h4><strong>Dirección: </strong>  {{$Cliente->direccion}}</h4>
+                              <h4><strong>Teléfono: </strong>  {{$Cliente->telefono}}</h4>
+                              <h4><strong>Beneficiario:  </strong> {{$Cliente->beneficiario}}</h4>
+                              <h4><strong>Usuario: </strong>  {{$Usuario->usuario}}</h4>
                             </div>
                         </div>
                     </div>

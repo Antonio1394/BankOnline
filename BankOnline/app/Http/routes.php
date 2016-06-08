@@ -16,13 +16,17 @@ Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 Route::group(['prefix' => 'admin', 'namespace' => '\Admin', 'middleware' => 'auth'], function () {
-    
+    Route::get('/', 'ClienteController@index');
+
+    Route::resource('transacciones','TransaccionesController');
+
+
     Route::get('/', 'UsersController@begin');
     Route::resource('users', 'UsersController');
     Route::resource('tarjetas','TarjetasController');
+
     Route::get('MostrarTarjeta/{id}',['as'=>'admin/MostrarTarjeta','uses'=>'TarjetasController@mostrar']);
     Route::resource('servicios', 'ServicesController');
-    Route::get('/', 'ClienteController@index');
 
     Route::group(['middleware' => 'superAdmin'], function () {
         Route::resource('tarjetas','TarjetasController');
