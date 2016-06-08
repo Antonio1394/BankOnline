@@ -22,11 +22,9 @@ class ServicesController extends Controller
     {
         $services = Servicio::whereHas('Tarjeta', function($query) use ($request) {
             $query->whereHas('Cuenta', function($queryTwo) use ($request) {
-                $queryTwo->whereHas('cliente', function($queryThree) use ($request) {
-                    $queryThree->where('idCliente', $request->user()->idCliente);
-                });
+                    $queryTwo->where('idCliente', $request->user()->idCliente);
             });
-        });
+        })->get();
 
         return view('admin.services.index', compact('services'));
     }
@@ -53,7 +51,11 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $service = new Servicio;
+        $service->fill($request->all());
+        $service->save();
+
+        return redirect('/admin/servicios')->with('message', 'Servicio creado correctamente.');
     }
 
     /**
