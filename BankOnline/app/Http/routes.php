@@ -19,7 +19,9 @@ Route::group(['prefix' => 'admin', 'namespace' => '\Admin', 'middleware' => 'aut
     Route::get('/', 'ClienteController@index');
 
     Route::resource('transacciones','TransaccionesController');
-    Route::put('transacciones/mostrar/{cuenta}',['as'=>'admin/transacciones/mostrar','uses'=>'TransaccionesController@mostrar']);
+    Route::get('mostrar/{cuenta}',['as'=>'admin/mostrar','uses'=>'TransaccionesController@mostrar']);
+    Route::get('transacciones/VerificarCuenta/{cuentaOrigen}/{monto}/{cuentaDestino}',['as'=>'admin/transacciones/verificarCuenta','uses'=>'TransaccionesController@verificarCuenta']);
+
     Route::resource('users', 'UsersController');
     Route::resource('tarjetas','TarjetasController');
     Route::get('MostrarTarjeta/{id}',['as'=>'admin/MostrarTarjeta','uses'=>'TarjetasController@mostrar']);

@@ -1,6 +1,6 @@
-{!!Form::open(['route' => 'admin.retiros.store', 'method' => 'POST', 'class' => 'form-validate', 'id' => 'createForm'])!!}
+{!!Form::open(['route' => 'admin.transacciones.store', 'method' => 'POST', 'class' => 'form-validate', 'id' => 'createForm'])!!}
 
-    @include('admin.retiros.partials.inputsForm')
+    @include('cliente.transacciones.partials.inputsForm')
 
     <div class="modal-footer">
 		{!!Form::submit('Generar', array('class' => 'btn btn-primary'))!!}
