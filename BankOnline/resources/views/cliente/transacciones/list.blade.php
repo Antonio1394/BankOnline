@@ -39,7 +39,7 @@
                           </tr>
                       </thead>
                       <tbody>
-                        @foreach($accounts as  $key => $account)
+                        @foreach($cuentas as  $key => $account)
                            <tr>
                                <td>{{ $key + 1   }}</td>
                                <td>{{ $account->tipo->descripcion }} </td>
@@ -55,11 +55,7 @@
                                <td>{{ $account->noCuenta }} </td>
                                <td>{{ $account->cliente->nombre }} {{ $account->cliente->apellido }}</td>
                                <td class="text-center">
-                                   @if($account->estado == 0)
-                                       <button type="button" name="delete" class="btn btn-success btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="cuentas/{{ $account->id }}" data-title="Activar Cuenta">Activar</button>
-                                   @else
-                                       <button type="button" name="delete" class="btn btn-danger btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="cuentas/{{ $account->id }}" data-title="Desactivar Cuenta">Desactivar</button>
-                                   @endif
+                                     <button type="button" name="delete" class="btn btn-info btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="transacciones/{{ $account->noCuenta }}" data-title="Desactivar Cuenta">Realizar Transaccion</button>
                                </td>
                            </tr>
                        @endforeach
