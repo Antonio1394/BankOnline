@@ -20,8 +20,6 @@ Route::group(['prefix' => 'admin', 'namespace' => '\Admin', 'middleware' => 'aut
 
     Route::resource('transacciones','TransaccionesController');
 
-
-    Route::get('/', 'UsersController@begin');
     Route::resource('users', 'UsersController');
     Route::resource('tarjetas','TarjetasController');
 

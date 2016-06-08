@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Cliente;
 use App\Servicio;
+use App\Tarjeta;
 
 class ServicesController extends Controller
 {
@@ -21,11 +22,9 @@ class ServicesController extends Controller
     {
         $services = Servicio::whereHas('Tarjeta', function($query) use ($request) {
             $query->whereHas('Cuenta', function($queryTwo) use ($request) {
-                $queryTwo->whereHas('cliente', function($queryThree) use ($request) {
-                    $queryThree->where('idCliente', $request->user()->idCliente);
-                });
+                    $queryTwo->where('idCliente', $request->user()->idCliente);
             });
-        });
+        })->get();
 
         return view('admin.services.index', compact('services'));
     }
@@ -35,9 +34,13 @@ class ServicesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $cards = Tarjeta::whereHas('Cuenta', function($query) use($request){
+            $query->where('idCliente', $request->user()->idCliente);
+        })->lists('numeroTarjeta', 'id');
+
+        return view('admin.services.create', compact('cards'));
     }
 
     /**
@@ -48,7 +51,11 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $service = new Servicio;
+        $service->fill($request->all());
+        $service->save();
+
+        return redirect('/admin/servicios')->with('message', 'Servicio creado correctamente.');
     }
 
     /**

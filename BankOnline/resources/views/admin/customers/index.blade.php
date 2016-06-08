@@ -49,7 +49,6 @@
                                <td>{{ $customer->telefono }} </td>
                                <td class="text-center">
                                    <button type="button" name="edit" class="btn btn-info btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="clientes/{{ $customer->id }}/edit" data-title="Actualizar Cliente">Editar</button>
-                                   <button type="button" name="delete" class="btn btn-warning btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="{{('MostrarTarjeta/' . $customer->id ) }}" data-title="Agregar Tarjeta">Agregar Tarjeta</button>
                                    <button type="button" name="delete" class="btn btn-success btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="{{('cuenta/new/' . $customer->id ) }}" data-title="Agregar Tarjeta">Crear Cuenta</button>
                                </td>
                            </tr>

@@ -17,7 +17,7 @@ class CreateServicioTable extends Migration
             $table->integer('idTarjeta')->unsigned();
             $table->date('fechaPago');
             $table->decimal('monto');
-            $table->string('descripcion');
+            $table->longText('descripcion');
 
             // Relaciones
             $table->foreign('idTarjeta')

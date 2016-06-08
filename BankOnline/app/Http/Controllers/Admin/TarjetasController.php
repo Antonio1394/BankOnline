@@ -44,7 +44,7 @@ class TarjetasController extends Controller
     public function store(Request $request)
     {
       Tarjeta::create($request->all());
-      return redirect('/admin/clientes')->with('message','Tarjeta Creada Exitosamente');
+      return redirect('/admin/cuentas')->with('message','Tarjeta Creada Exitosamente');
 
     }
 
