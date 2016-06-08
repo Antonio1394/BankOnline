@@ -22,7 +22,7 @@
           </li>
           <li>
               <a href="{{ url('admin/users') }}">
-                  <i class="fa  fa-sign-in"></i> <span> Cuentas</span>
+                  <i class="fa  fa-sign-in"></i> <span> Usuarios</span>
               </a>
           </li>
           <li>
@@ -59,7 +59,7 @@
           </li>
           <li>
               <a href="{{ url('admin/servicios') }}">
-                  <i class="fa fa-exchange"></i> <span>Servicios</span>
+                  <i class="fa fa-coffee"></i> <span>Servicios</span>
               </a>
           </li>
         </ul>

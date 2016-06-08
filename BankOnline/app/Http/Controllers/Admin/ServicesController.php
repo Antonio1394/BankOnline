@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Cliente;
 use App\Servicio;
+use App\Tarjeta;
 
 class ServicesController extends Controller
 {
@@ -35,9 +36,13 @@ class ServicesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $cards = Tarjeta::whereHas('Cuenta', function($query) use($request){
+            $query->where('idCliente', $request->user()->idCliente);
+        })->lists('numeroTarjeta', 'id');
+
+        return view('admin.services.create', compact('cards'));
     }
 
     /**

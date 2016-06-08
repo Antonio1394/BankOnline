@@ -55,6 +55,7 @@
                                <td>{{ $account->noCuenta }} </td>
                                <td>{{ $account->cliente->nombre }} {{ $account->cliente->apellido }}</td>
                                <td class="text-center">
+                                   <button type="button" name="delete" class="btn btn-warning btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="{{('MostrarTarjeta/' . $account->id ) }}" data-title="Agregar Tarjeta">Agregar Tarjeta</button>
                                    @if($account->estado == 0)
                                        <button type="button" name="delete" class="btn btn-success btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="cuentas/{{ $account->id }}" data-title="Activar Cuenta">Activar</button>
                                    @else
