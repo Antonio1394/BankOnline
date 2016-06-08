@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-
+use App\Cuenta;
+use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +17,8 @@ class TransaccionesController extends Controller
      */
     public function index()
     {
-      return view('cliente.transacciones.list');
+      $cuentas=Cuenta::where('idCliente','=',Auth::user()->idCliente)->get();
+      return view('cliente.transacciones.list',compact('cuentas'));
     }
 
     /**
@@ -26,7 +28,7 @@ class TransaccionesController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -83,5 +85,10 @@ class TransaccionesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function mostrar($cuenta)
+    {
+      
     }
 }
