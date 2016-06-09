@@ -92,15 +92,18 @@ class ServicesController extends Controller
      */
     public function edit($id)
     {
-        $payment = PagoServicio::find($id);
-        $service = Servicio::find($payment->idServicio);
+        $payment = PagoServicio::where('id', $id)
+                                ->where('estado', false)
+                                ->take(1)->get();
+
+        $service = Servicio::find($payment[0]->idServicio);
 
         if( $service->Tarjeta->Cuenta->estado == 1 ) {
             if ( ($service->Tarjeta->tipo == 1 and $service->Tarjeta->Cuenta->monto >= $service->monto)
                     or $service->Tarjeta->tipo == 2) {
 
-                $payment->estado = true;
-                $payment->save();
+                $payment[0]->estado = true;
+                $payment[0]->save();
 
                 $account = Cuenta::find($service->Tarjeta->idCuenta);
                 $account->monto = $account->monto - $service->monto;

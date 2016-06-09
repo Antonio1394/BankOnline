@@ -56,6 +56,9 @@
                                                 <p>
                                                     {{ $data->Servicio->descripcion }}
                                                 </p>
+                                                <p>
+                                                    {{ date('d/m', strtotime($data->Servicio->fechaPago)) }}
+                                                </p>
                                             </div>
                                             <div class="icon">
                                                 <i class="fa fa-shopping-bag"></i>

@@ -46,7 +46,7 @@ class ClienteController extends Controller
             $payment = PagoServicio::where('idServicio', $value->id)->get();
 
             foreach ($payment as $item => $data) {
-                if ( $data->mes == $month
+                if ( $data->mes <= $month
                         and $data->año == $year
                         and $data->estado == false ) {
                     $alertServers[$key] = $data;
