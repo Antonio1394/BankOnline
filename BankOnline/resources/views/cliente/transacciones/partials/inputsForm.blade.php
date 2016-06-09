@@ -1,14 +1,13 @@
 
 <div class="form-group">
-	{!! Form::hidden('idtipo', 2, ['id' => 'user_id']) !!}
-	{!! Form::hidden('cuenta_origen',0, ['id' => 'user_id']) !!}
+	{!! Form::hidden('cuenta_origen',$cuentaOrigen, ['id' => 'cuentaOrigen']) !!}
 
-<label for="">Numero de Cuenta</label>
+<label for="">Cuenta de Destino:</label>
 	{!!Form::text('cuenta_destino', null, array('class' => 'form-control', 'placeholder' => 'Inserta el número de Cuenta', 'required' => 'required','id'=>'destino'))!!}
 </div>
 <div class="form-group">
-	<label for="">Monto a Retirar</label>
-	{!!Form::text('monto',null, array('class' => 'form-control', 'placeholder' => 'Inserta el Monto', 'required' => 'required','id'=>'monto'))!!}
+	<label for="">Monto de a Transferir:</label>
+	{!!Form::number('monto',null, array('class' => 'form-control', 'placeholder' => 'Inserta el Monto', 'required' => 'required','id'=>'monto'))!!}
 </div>
 <input type="hidden" name="fecha" value="{{ \Carbon\Carbon::now() }}">
 
@@ -34,7 +33,7 @@ $("#createForm").validate({
 				submitHandler: function(form){
 					$('#msg').css('display', 'none');
 					$.ajax({
-                url: 'retiros/VerificarCuenta/' + $( "#destino" ).val()+'/'+$( "#monto" ).val(),
+                url: 'transacciones/VerificarCuenta/' + $( "#destino" ).val()+'/'+$( "#monto" ).val()+'/'+$( "#cuentaOrigen" ).val(),
                 type: "get",
                  success: function(response){
 

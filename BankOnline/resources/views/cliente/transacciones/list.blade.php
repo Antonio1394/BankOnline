@@ -55,7 +55,7 @@
                                <td>{{ $account->noCuenta }} </td>
                                <td>{{ $account->cliente->nombre }} {{ $account->cliente->apellido }}</td>
                                <td class="text-center">
-                                     <button type="button" name="delete" class="btn btn-info btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="transacciones/{{ $account->noCuenta }}" data-title="Desactivar Cuenta">Realizar Transaccion</button>
+                                     <button type="button" name="delete" class="btn btn-info btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="mostrar/{{ $account->noCuenta }}" data-title="Realizar Transferencia">Realizar Transaccion</button>
                                </td>
                            </tr>
                        @endforeach
@@ -73,6 +73,7 @@
     <!-- DATA TABES SCRIPT -->
     {!!Html::script("js/datatables/jquery.dataTables.js")!!}
     {!!Html::script("js/datatables/dataTables.bootstrap.js")!!}
+      {!!Html::script("js/jquery.validate.js")!!}
 
     <!-- page script -->
     <script type="text/javascript">
