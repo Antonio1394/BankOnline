@@ -25,6 +25,7 @@ Route::group(['prefix' => 'admin', 'namespace' => '\Admin', 'middleware' => 'aut
     Route::resource('users', 'UsersController');
     Route::resource('tarjetas','TarjetasController');
     Route::get('MostrarTarjeta/{id}',['as'=>'admin/MostrarTarjeta','uses'=>'TarjetasController@mostrar']);
+    Route::post('servicio/renovar', ['as'=>'admin/servicio/renovar','uses'=>'ServicesController@renewal']);
     Route::resource('servicios', 'ServicesController');
 
     Route::group(['middleware' => 'superAdmin'], function () {

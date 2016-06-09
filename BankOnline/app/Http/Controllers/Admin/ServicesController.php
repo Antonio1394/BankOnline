@@ -81,7 +81,27 @@ class ServicesController extends Controller
      */
     public function show($id)
     {
-        //
+        $year = PagoServicio::where('idServicio', $id)->where('mes', 12)->orderBy('año', 'DESC')->take(1)->get();
+
+        $newYear = $year[0]->año + 1;
+
+        return view('admin.services.renewal')->with('newYear', $newYear)->with('idServicio', $id);
+    }
+
+    public function renewal(Request $request)
+    {
+        $year = $request->year;
+
+        for ($i=1; $i <= 12; $i++) {
+            $payment = new PagoServicio;
+            $payment->idServicio = $request->idServicio;
+            $payment->año = $year;
+            $payment->mes = $i;
+            $payment->estado = false;
+            $payment->save();
+        }
+
+        return redirect('/admin/servicios')->with('message', 'Servicio renovado.');
     }
 
     /**
