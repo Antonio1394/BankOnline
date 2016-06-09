@@ -55,7 +55,12 @@
                                <td>{{ $account->noCuenta }} </td>
                                <td>{{ $account->cliente->nombre }} {{ $account->cliente->apellido }}</td>
                                <td class="text-center">
-                                     <button type="button" name="delete" class="btn btn-info btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="mostrar/{{ $account->noCuenta }}" data-title="Realizar Transferencia">Realizar Transaccion</button>
+                                 @if($account->estado==true)
+                                     <button type="button" name="delete" class="btn btn-info btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="mostrar/{{ $account->noCuenta }}" data-title="Realizar Transferencia">Realizar Transferencia</button>
+                                     <button type="button" name="delete" class="btn btn-info btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="mostrarTrans/{{ $account->noCuenta }}" data-title="Realizar Transferencia">Ver Transferencias</button>
+                                @else
+                                    <button type="button"  class="btn btn-danger btn-sm loadModal" >No se pueden realizar Transferencias</button>
+                                @endif
                                </td>
                            </tr>
                        @endforeach
@@ -63,7 +68,6 @@
                   </table>
               </div><!-- /.box-body -->
           </div><!-- /.box -->
-
         </section><!-- /.content -->
     </aside><!-- /.right-side -->
       @include('admin.partials.modal')

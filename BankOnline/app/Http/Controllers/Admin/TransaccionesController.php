@@ -18,8 +18,9 @@ class TransaccionesController extends Controller
      */
     public function index()
     {
+      $trans=Movimiento::where('idtipo','=','3')->get();
       $cuentas=Cuenta::where('idCliente','=',Auth::user()->idCliente)->get();
-      return view('cliente.transacciones.list',compact('cuentas'));
+      return view('cliente.transacciones.list',compact('cuentas','trans'));
     }
 
     /**
@@ -111,6 +112,12 @@ class TransaccionesController extends Controller
     public function mostrar($cuentaOrigen)
     {
       return view('cliente.transacciones.partials.createForm')->with('cuentaOrigen',$cuentaOrigen);
+    }
+
+    public function mostrarTrans($cuenta)
+    {
+        $trans=Movimiento::where('cuenta_origen','=',$cuenta)->where('idtipo','=','3')->get();
+        return view('cliente.transacciones.partials.ShowForm')->with('trans',$trans);
     }
 
     public function verificarCuenta($cuentaDestino,$monto,$cuentaOrigen)

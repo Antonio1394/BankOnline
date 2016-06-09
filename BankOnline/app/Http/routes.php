@@ -20,6 +20,8 @@ Route::group(['prefix' => 'admin', 'namespace' => '\Admin', 'middleware' => 'aut
 
     Route::resource('transacciones','TransaccionesController');
     Route::get('mostrar/{cuenta}',['as'=>'admin/mostrar','uses'=>'TransaccionesController@mostrar']);
+    Route::get('mostrarTrans/{cuenta}',['as'=>'admin/mostrarTrans','uses'=>'TransaccionesController@mostrarTrans']);
+
     Route::get('transacciones/VerificarCuenta/{cuentaOrigen}/{monto}/{cuentaDestino}',['as'=>'admin/transacciones/verificarCuenta','uses'=>'TransaccionesController@verificarCuenta']);
 
     Route::resource('users', 'UsersController');
