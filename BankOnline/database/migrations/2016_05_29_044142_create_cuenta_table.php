@@ -16,7 +16,7 @@ class CreateCuentaTable extends Migration
             $table->increments('id');
             $table->integer('idTipo')->unsigned();
             $table->integer('idCliente')->unsigned();
-            $table->integer('monto')->unsigned();
+            $table->integer('monto');
             $table->date('fechaCreacion');
             $table->boolean('estado');
             $table->string('noCuenta');

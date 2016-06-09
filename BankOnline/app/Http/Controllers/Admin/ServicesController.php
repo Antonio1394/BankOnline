@@ -11,6 +11,7 @@ use App\Cliente;
 use App\Servicio;
 use App\Tarjeta;
 use App\PagoServicio;
+use App\Cuenta;
 
 class ServicesController extends Controller
 {
@@ -92,10 +93,26 @@ class ServicesController extends Controller
     public function edit($id)
     {
         $payment = PagoServicio::find($id);
-        $payment->estado = true;
-        $payment->save();
+        $service = Servicio::find($payment->idServicio);
 
-        return redirect('/admin/servicios')->with('message', 'Servicio Pagado');
+        if( $service->Tarjeta->Cuenta->estado == 1 ) {
+            if ( ($service->Tarjeta->tipo == 1 and $service->Tarjeta->Cuenta->monto >= $service->monto)
+                    or $service->Tarjeta->tipo == 2) {
+
+                $payment->estado = true;
+                $payment->save();
+
+                $account = Cuenta::find($service->Tarjeta->idCuenta);
+                $account->monto = $account->monto - $service->monto;
+                $account->save();
+
+                return redirect('/admin/servicios')->with('message', 'Servicio Pagado');
+            } else {
+                return redirect('/admin/servicios')->with('error', 'La cuenta no tiene fondos.');
+            }
+        } else {
+            return redirect('/admin/servicios')->with('error', 'La cuenta esta desactiva.');
+        }
     }
 
     /**
