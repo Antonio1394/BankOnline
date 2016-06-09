@@ -40,16 +40,18 @@ class ClienteController extends Controller
         $year = date('Y', strtotime($currentDate));
 
         $alertServers = [];
-
+        $i = 0;
         foreach ($services as $key => $value) {
 
             $payment = PagoServicio::where('idServicio', $value->id)->get();
 
             foreach ($payment as $item => $data) {
-                if ( $data->mes <= $month
-                        and $data->año == $year
+                if ( (($data->mes <= $month
+                        and $data->año == $year)
+                        or ($data->año < $year))
                         and $data->estado == false ) {
-                    $alertServers[$key] = $data;
+                    $alertServers[$i] = $data;
+                    $i++;
                 }
             }
         }

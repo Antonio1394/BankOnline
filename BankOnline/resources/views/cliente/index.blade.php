@@ -57,7 +57,9 @@
                                                     {{ $data->Servicio->descripcion }}
                                                 </p>
                                                 <p>
-                                                    {{ date('d/m', strtotime($data->Servicio->fechaPago)) }}
+                                                    {{ date('d', strtotime($data->Servicio->fechaPago)) }}/
+                                                    {{ $data->mes }}/
+                                                    {{ $data->año }}
                                                 </p>
                                             </div>
                                             <div class="icon">

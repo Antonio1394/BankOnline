@@ -44,7 +44,7 @@
                                <td>{{ $data->fechaPago }} </td>
                                <td> {{ $data->monto}} </td>
                                <td class="text-center">
-                                   <button type="button" name="edit" class="btn btn-info btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="servicios/{{$data->id }}" data-title="Actualizar Centro">Renovar Servicio</button>
+                                   <button type="button" name="edit" class="btn btn-info btn-sm loadModal" data-toggle='modal' data-target='#generalModal' data-url="servicios/{{$data->id }}" data-title="Renovar Servicio">Renovar Servicio</button>
                                </td>
                            </tr>
                        @endforeach
