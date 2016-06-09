@@ -17,7 +17,6 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 Route::group(['prefix' => 'admin', 'namespace' => '\Admin', 'middleware' => 'auth'], function () {
     Route::get('/', 'ClienteController@index');
-
     Route::resource('transacciones','TransaccionesController');
     Route::get('mostrar/{cuenta}',['as'=>'admin/mostrar','uses'=>'TransaccionesController@mostrar']);
     Route::get('mostrarTrans/{cuenta}',['as'=>'admin/mostrarTrans','uses'=>'TransaccionesController@mostrarTrans']);

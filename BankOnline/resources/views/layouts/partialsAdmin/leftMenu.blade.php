@@ -47,13 +47,13 @@
           </li>
           @else
           <li>
-              <a href="{{ url('admin/tarjetas') }}">
-                  <i class="fa fa-credit-card-alt"></i> <span> Cuentas</span>
+              <a href="{{ url('/') }}">
+                  <i class="fa fa-credit-card-alt"></i> <span> Inicio</span>
               </a>
           </li>
           <li>
               <a href="{{ url('admin/transacciones') }}">
-                  <i class="fa fa-exchange"></i> <span>Transferencias</span>
+                  <i class="fa fa-exchange"></i> <span>Cuentas</span>
               </a>
           </li>
           <li>

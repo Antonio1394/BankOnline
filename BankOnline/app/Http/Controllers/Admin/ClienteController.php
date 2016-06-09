@@ -124,4 +124,9 @@ class ClienteController extends Controller
     {
         //
     }
+
+    public function mostrarCuentas()
+    {
+      return 'hola';
+    }
 }
